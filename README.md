@@ -525,6 +525,7 @@ If type == “TEST” the server will return a response as if this order is succ
 <li>authToken: if passed in, will only return orders for this customer</li>
 <li>number: string, order number</li></ul></pre>
 
+
 ### Response:
 <pre>
 {
