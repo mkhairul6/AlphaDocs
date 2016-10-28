@@ -1,5 +1,5 @@
 # (uns)Table of Contents
-1. History of Changes
+1. <a href="#history-of-changes">History of Changes</a>
 2. Alpha Entities Overview
 3. Basics of Calling the API
 4. API
