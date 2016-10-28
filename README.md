@@ -294,8 +294,6 @@ Sample: <http://alpha.savantdegrees.com/api/1.0/stores/ALT>
 }
 </pre>
 
-
-
 #### Samples:
 1. <http://alpha.savantdegrees.com/api/1.0/menu/ALT>
 2. <http://alpha.savantdegrees.com/api/1.0/menu/MLP>
@@ -605,7 +603,7 @@ The following are descriptions for each status (values in brackets are what is d
 *Don’t pass in the parameter if not available*
 
 ### POST Parameters:
-<pre><ul><li>firstName</li>
+<ul><li>firstName</li>
 <li>lastName</li>
 <li>email</li>
 <li>password</li>
@@ -626,7 +624,7 @@ The following are descriptions for each status (values in brackets are what is d
 <li>addressPostalCode</li>
 <li>deviceToken: device token for push notifications</li>
 <li>deviceType: “ANDROID|IOS”</li>
-<li>nationalityCode: 2-character string ISO 3166-2 country code</li></ul></pre>
+<li>nationalityCode: 2-character string ISO 3166-2 country code</li></ul>
 
 ### Response:
 <pre>
@@ -650,8 +648,8 @@ The following are descriptions for each status (values in brackets are what is d
 *Don’t pass in the parameter if not updating.*
 
 ### Additional POST Parameters:
-<pre><ul><li>authToken: authentication token of the user</li>
-<li>addressId: ID of address to update, if not passed in when address data is passed in, the system will try to find the address to update by its name</li></ul></pre>
+<ul><li>authToken: authentication token of the user</li>
+<li>addressId: ID of address to update, if not passed in when address data is passed in, the system will try to find the address to update by its name</li></ul>
 
 The rest are same as register. addressName if it matches an existing name of an address, will update that address, otherwise, will add a new address.
 
@@ -660,8 +658,8 @@ The rest are same as register. addressName if it matches an existing name of an 
 `http://<server>/api/1.0/customer/deleteAddress/<brandCode>`
 
 ### POST Parameters:
-<pre><ul><li>authToken: string</li>
-<li>id: ID of Address to delete</li></ul></pre>
+<ul><li>authToken: string</li>
+<li>id: ID of Address to delete</li></ul>
 
 ### Response:
 <pre>
@@ -675,7 +673,7 @@ The rest are same as register. addressName if it matches an existing name of an 
 `http://<server>/api/1.0/customer/details/<brandCode>`
 
 ### GET Parameters:
-<pre><ul><li>authToken: string</li></ul></pre>
+<ul><li>authToken: string</li></ul>
 
 ### Response:
 <pre>
@@ -738,7 +736,7 @@ The rest are same as register. addressName if it matches an existing name of an 
 `http://<server>/api/1.0/customer/login/<brandCode>`
 
 ### POST Parameters:
-<pre><ul><li>email</li>
+<ul><li>email</li>
 <li>password</li>
 <li>facebookId</li>
 <li>googlePlusId</li>
@@ -746,7 +744,7 @@ The rest are same as register. addressName if it matches an existing name of an 
 <li>accessToken: Facebook or Google Plus or LINE access token</li>
 <li>refreshToken: LINE refresh token</li>
 <li>deviceToken: device token for push notifications</li>
-<li>deviceType: “ANDROID|IOS”</li></ul></pre>
+<li>deviceType: “ANDROID|IOS”</li></ul>
 
 (email and password) OR (facebookId and accessToken) OR (googlePlusId and accessToken) OR (lineId and accessToken) is required
 
@@ -763,9 +761,9 @@ The rest are same as register. addressName if it matches an existing name of an 
 `http://<server>/api/1.0/customer/logout/<brandCode>`
 
 ### POST Parameters:
-<pre><ul><li>accessToken: Facebook or Google Plus access token</li>
+<ul><li>accessToken: Facebook or Google Plus access token</li>
 <li>authToken: string</li>
-<li>deviceToken: device push token so as to disable push notifications to this device</li></ul></pre>
+<li>deviceToken: device push token so as to disable push notifications to this device</li></ul>
 
 ### Response:
 <pre>
@@ -779,7 +777,7 @@ The rest are same as register. addressName if it matches an existing name of an 
 `http://<server>/api/1.0/customer/forgotPassword/<brandCode>`
 
 ### POST Parameters:
-<pre><ul><li>email: customer email address</li></ul></pre>
+<ul><li>email: customer email address</li></ul>
 
 ### Response:
 <pre>
@@ -796,9 +794,9 @@ The rest are same as register. addressName if it matches an existing name of an 
 `http://<server>/api/1.0/customer/changePassword/<brandCode>`
 
 ### POST Parameters:
-<pre><ul><li>email: customer email address</li>
+<ul><li>email: customer email address</li>
 <li>pin: pin number that was sent to their email account</li>
-<li>password: new password</li></ul></pre>
+<li>password: new password</li></ul>
 
 ### Response:
 <pre>
@@ -817,13 +815,13 @@ The rest are same as register. addressName if it matches an existing name of an 
 `http://<server>/api/1.0/eta/<brandCode>`
 
 ### GET Parameters:
-<pre><ul>
+<ul>
 <li>store: ID of store</li>
 <li>orderType: “DELIVERY|TAKE_AWAY|DINE_IN”</li>
 <li>address: string, pass in either this or (postalCode and countryCode)</li>
 <li>postalCode: pass in (this and countryCode) or address</li>
 <li>countryCode: see postalCode</li>
-<li>subTotal: decimal number, defaults to 0 if not passed in</li></ul></pre>
+<li>subTotal: decimal number, defaults to 0 if not passed in</li></ul>
 
 
 ## Get GPS Coordinates from Address
@@ -831,7 +829,7 @@ The rest are same as register. addressName if it matches an existing name of an 
 `http://<server>/api/1.0/location/coordinates`
 
 ### GET Parameters:
-<pre><ul><li>line: string, any free-form string containing some kind of address</li></ul></pre>
+<ul><li>line: string, any free-form string containing some kind of address</li></ul>
 
 ### Response:
 <pre>
@@ -847,8 +845,8 @@ The rest are same as register. addressName if it matches an existing name of an 
 `http://<server>/api/1.0/location/address`
 
 ### GET Parameters:
-<pre><ul><li>lat: double, latitude</li>
-<li>lng: double, longitude</li></ul></pre>
+<ul><li>lat: double, latitude</li>
+<li>lng: double, longitude</li></ul>
 
 ### Response:
 <pre>
@@ -863,7 +861,7 @@ The rest are same as register. addressName if it matches an existing name of an 
 `http://<server>/api/1.0/location/closestStore/<brandCode>`
 
 ### GET Parameters:
-<pre><ul><li>line: address string</li></ul></pre>
+<ul><li>line: address string</li></ul>
 
 ### Response:
 <pre>
@@ -878,8 +876,8 @@ The rest are same as register. addressName if it matches an existing name of an 
 `http://<server>/api/1.0/customer/favourites`
 
 ### GET Parameters:
-<pre><ul><li>authToken: string</li>
-<li>productData: boolean, if true returns product details in 'favourites' property of the response</li></ul></pre>
+<ul><li>authToken: string</li>
+<li>productData: boolean, if true returns product details in 'favourites' property of the response</li></ul>
 
 ### Response:
 <pre>
@@ -903,8 +901,8 @@ The rest are same as register. addressName if it matches an existing name of an 
 `http://<server>/api/1.0/customer/favourite`
 
 ### POST Parameters:
-<pre><ul><li>authToken: string</li>
-<li>product: ID of product</li></ul></pre>
+<ul><li>authToken: string</li>
+<li>product: ID of product</li></ul>
 
 ### Response:
 <pre>
@@ -918,8 +916,8 @@ The rest are same as register. addressName if it matches an existing name of an 
 `http://<server>/api/1.0/customer/unfavourite`
 
 ### POST Parameters:
-<pre><ul><li>authToken: string</li>
-<li>product: ID of product</li></ul></pre>
+<ul><li>authToken: string</li>
+<li>product: ID of product</li></ul>
 
 ### Response:
 <pre>
@@ -935,9 +933,9 @@ The rest are same as register. addressName if it matches an existing name of an 
 `http://<server>/api/1.0/customers/<brandCode>`
 
 ### GET Parameters:
-<pre><ul><li>pageSize: maximum number of records to return per page, if missing = 20</li>
+<ul><li>pageSize: maximum number of records to return per page, if missing = 20</li>
 <li>pageNumber: 0-based index of page to return, if missing = 0</li>
-<li>memberId: string, optional, if passed in, only the member with that memberId is returned</li></ul></pre>
+<li>memberId: string, optional, if passed in, only the member with that memberId is returned</li></ul>
 
 ### Response:
 <pre>
