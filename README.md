@@ -656,7 +656,6 @@ The following are descriptions for each status (values in brackets are what is d
 
 The rest are same as register. addressName if it matches an existing name of an address, will update that address, otherwise, will add a new address.
 
-
 ## Delete a Customer Address
 
 `http://<server>/api/1.0/customer/deleteAddress/<brandCode>`
