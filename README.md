@@ -162,7 +162,7 @@ Sample: <http://alpha.savantdegrees.com/api/1.0/stores/ALT>
 
 
 ### GET Parameters:
-<pre><ul><li>showAll: boolean, default is false, if true returns all products regardless whether they are available or not</li></ul></pre>
+<ul><li>showAll: boolean, default is false, if true returns all products regardless whether they are available or not</li></ul>
 
 ### Response:
 <pre>
@@ -451,7 +451,6 @@ If type == “TEST” the server will return a response as if this order is succ
 
 #### Samples:
 
-
 ##### Posting a test order: `http://alpha.savantdegrees.com/api/1.0/order/ALT`
 <pre>
 {
@@ -514,7 +513,7 @@ If type == “TEST” the server will return a response as if this order is succ
 `http://<server>/api/1.0/orders/<brandCode>`
 
 ### GET Parameters:
-<pre><ul><li>store: ID of Store, if missing Orders from all Stores are returned</li>
+<ul><li>store: ID of Store, if missing Orders from all Stores are returned</li>
 <li>pageSize: maximum number of records to return per page, if missing = 20</li>
 <li>pageNumber: 0-based index of page to return, if missing = 0</li>
 <li>sortOrder: “ASC|DESC”, if missing = “ASC”</li>
@@ -523,8 +522,7 @@ If type == “TEST” the server will return a response as if this order is succ
 <li>placeTimeFrom: long, epoch time in millisecond, inclusive</li>
 <li>placeTimeTo: long, epoch time in millisecond, exclusive</li>
 <li>authToken: if passed in, will only return orders for this customer</li>
-<li>number: string, order number</li></ul></pre>
-
+<li>number: string, order number</li></ul>
 
 ### Response:
 <pre>
