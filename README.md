@@ -88,7 +88,7 @@
 * <a href="#modifier">Modifier</a>
 * <a href="#modifieritem">ModifierItem</a>
 * <a href="#order">Order</a>
-* <a href="#guest">OrderItem</a>
+* <a href="#orderitem">OrderItem</a>
 * <a href="#payment">Payment</a>
 * <a href="#pager">Pager</a>
 * <a href="#rewards">Rewards</a>
