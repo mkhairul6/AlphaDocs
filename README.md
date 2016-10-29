@@ -1,37 +1,38 @@
 # (uns)Table of Contents
 1. <a href="#history-of-changes">History of Changes</a>
-2. Alpha Entities Overview
-3. Basics of Calling the API
-4. API
-	* Getting Stores
-	* Getting the Menu
-	* Posting an Order
-	* Reading all Orders
-	* Order Statuses
-	* Accepting an Order
-	* Completing an Order
-	* Cancelling an Order
-	* Register a Customer
-	* Update a Customer
-	* Delete a Customer Address
-	* Get Customer Details
-	* Login Customer
-	* Logout Customer
-	* Request for Customer Password Change
-	* Change Customer Password (after Request)
-	* Get ETA
-	* Get GPS Coordinates from Address
-	* Get Address from GPS Coordinates
-	* Get Closest Store from Address
-	* Get Favourite Product List for Customer
-	* Add a Favourite Product for Customer
-	* Remove a Favourite Product for Customer
-5. Collision 8 Extensions
-	* Get All Customers
-	* Posting an Order
-6. MasterDemo Extensions
-7. Cama Cafe Extensions
-	* Get App Translation Dictionary
+2. <a href="#alpha-entities-overview">Alpha Entities Overview</a>
+	* <a href="#entities-index">Entities Index</a>
+3. <a href="#basics-of-calling-the-api">Basics of Calling the API</a>
+4. <a href="#api">API</a>
+	* <a href="#getting-stores">Getting Stores</a>
+	* <a href="#getting-the-menu">Getting the Menu</a>
+	* <a href="#posting-an-order">Posting an Order</a>
+	* <a href="#reading-all-orders">Reading all Orders</a>
+	* <a href="#order-statuses">Order Statuses</a>
+	* <a href="#accepting-an-order">Accepting an Order</a>
+	* <a href="#completing-an-order">Completing an Order</a>
+	* <a href="#cancelling-an-order">Cancelling an Order</a>
+	* <a href="#register-a-customer">Register a Customer</a>
+	* <a href="#update-a-customer">Update a Customer</a>
+	* <a href="#delete-a-customer-address">Delete a Customer Address</a>
+	* <a href="#get-customer-details">Get Customer Details</a>
+	* <a href="#login-customer">Login Customer</a>
+	* <a href="#logout-customer">Logout Customer</a>
+	* <a href="#request-for-customer-password-change">Request for Customer Password Change</a>
+	* <a href="#change-customer-password-after-request">Change Customer Password (after Request)</a>
+	* <a href="#get-eta">Get ETA</a>
+	* <a href="#get-gps-coordinates-from-address">Get GPS Coordinates from Address</a>
+	* <a href="#get-address-from-gps-coordinates">Get Address from GPS Coordinates</a>
+	* <a href="#get-closet-store-for-address">Get Closest Store from Address</a>
+	* <a href="#get-favourite-product-list-for-customer">Get Favourite Product List for Customer</a>
+	* <a href="#add-a-favourite-product-for-customer">Add a Favourite Product for Customer</a>
+	* <a href="#remove-a-favourite-product-for-customer">Remove a Favourite Product for Customer</a>
+5. <a href="#collision-8-extensions">Collision 8 Extensions</a>
+	* <a href="#get-all-customers">Get All Customers</a>
+	* <a href="#posting-an-order-1">Posting an Order</a>
+6. <a href="#masterdemo-extensions">MasterDemo Extensions</a>
+7. <a href="cama-cafe-extensions">Cama Cafe Extensions</a>
+	* <a href="#get-app-translation-dictionary">Get App Translation Dictionary</a>
 
 # History of Changes
 
@@ -58,7 +59,6 @@
 
 # Alpha Entities Overview
 
-
 * **Brand** - Alpha supports multiple Brands. Every other entity is tied to a Brand. 
 * **Store** - A place that you make an order to. 
 * **Product** - An item that can be sold on its own
@@ -69,6 +69,7 @@
 * **Modifier** - Something that modifies the final Product that the customer receives. Can have extra cost. 
 * **Availability** - A day + time range for when something is available 
 
+## Entities Index
 
 # Basics of Calling the API
 
@@ -100,7 +101,7 @@ It will be at something like `/api/<version>/<service>/<brandCode>`
 }
 </pre>
 
-**Store**:
+#### Store:
 <pre>
 {
 	id: ID,
@@ -124,7 +125,7 @@ It will be at something like `/api/<version>/<service>/<brandCode>`
 </pre>
 
 
-**Address**:
+#### Address:
 <pre>
 {
 	line1: string,
@@ -137,7 +138,7 @@ It will be at something like `/api/<version>/<service>/<brandCode>`
 </pre>
 
 
-**Coordinates**:
+#### Coordinates:
 <pre>
 {
 	lat: double, latitude
@@ -145,8 +146,7 @@ It will be at something like `/api/<version>/<service>/<brandCode>`
 }
 </pre>
 
-
-**Table**:
+#### Table:
 <pre>
 {
 	id: ID,
@@ -159,7 +159,6 @@ Sample: <http://alpha.savantdegrees.com/api/1.0/stores/ALT>
 ## Getting the Menu
 
 `http://<server>/api/1.0/menu/<brandCode>`
-
 
 ### GET Parameters:
 <ul><li>showAll: boolean, default is false, if true returns all products regardless whether they are available or not</li></ul>
@@ -176,7 +175,7 @@ Sample: <http://alpha.savantdegrees.com/api/1.0/stores/ALT>
 }
 </pre>
 
-**Brand**:
+#### Brand:
 <pre>
 {
 	id: ID,
@@ -188,7 +187,7 @@ Sample: <http://alpha.savantdegrees.com/api/1.0/stores/ALT>
 }
 </pre>
 
-**Tag**:
+#### Tag:
 <pre> 
 {
 	id: ID
@@ -198,7 +197,7 @@ Sample: <http://alpha.savantdegrees.com/api/1.0/stores/ALT>
 }
 </pre>
 
-**Category**:
+#### Category:
 <pre>
 {
 	id: ID,
@@ -211,7 +210,7 @@ Sample: <http://alpha.savantdegrees.com/api/1.0/stores/ALT>
 }
 </pre>
 
-**Product**:
+#### Product:
 <pre>
 {
 	id: ID,
@@ -230,7 +229,7 @@ Sample: <http://alpha.savantdegrees.com/api/1.0/stores/ALT>
 }
 </pre>
 
-**Modifier Group**:
+#### Modifier Group:
 <pre>
 {
 	id: ID,
@@ -244,7 +243,7 @@ Sample: <http://alpha.savantdegrees.com/api/1.0/stores/ALT>
 }
 </pre>
 
-**Modifier**:
+#### Modifier:
 <pre>
 {
 	id: ID,
@@ -259,7 +258,7 @@ Sample: <http://alpha.savantdegrees.com/api/1.0/stores/ALT>
 }
 </pre>
 
-**Availability**:
+#### Availability:
 <pre>
 {
 	dayOfWeek: “MONDAY|TUESDAY|etc..”,
@@ -268,7 +267,7 @@ Sample: <http://alpha.savantdegrees.com/api/1.0/stores/ALT>
 }
 </pre>
 
-**Banner**:
+#### Banner:
 <pre>
 {
 	id: ID,
@@ -284,7 +283,7 @@ Sample: <http://alpha.savantdegrees.com/api/1.0/stores/ALT>
 }
 </pre>
 
-**Variant**:
+#### Variant:
 <pre>
 {
 	id: ID,
@@ -330,8 +329,7 @@ Note that at BEDOK, only takeaway is available for that product.
 
 If type == “TEST” the server will return a response as if this order is successfully placed. Useful for retrieving taxes, applying promotion codes, vouchers and so on.
  
-
-**Guest**:
+#### Guest:
 <pre>
 {
 	firstName: optional
@@ -341,7 +339,7 @@ If type == “TEST” the server will return a response as if this order is succ
 }
 </pre>
 
-**OrderItem**:
+#### OrderItem:
 <pre>
 {
 	id: ID, ignored when POSTed to endpoint
@@ -356,7 +354,7 @@ If type == “TEST” the server will return a response as if this order is succ
 }
 </pre>
 
-**ModifierItem**:
+#### ModifierItem:
 <pre>
 {	
 	id: ID, ignored when POSTed to endpoint
@@ -367,7 +365,7 @@ If type == “TEST” the server will return a response as if this order is succ
 }
 </pre>
 
-**Payment**:
+#### Payment:
 <pre>
 {
 	id: ID, ignored when POSTed to endpoint
@@ -379,7 +377,7 @@ If type == “TEST” the server will return a response as if this order is succ
 }
 </pre>
 
-**Address**:
+#### Address:
 <pre>
 {
 	line1: string
@@ -398,7 +396,7 @@ If type == “TEST” the server will return a response as if this order is succ
 }
 </pre>
 
-**Order**:
+#### Order:
 <pre>
 {
 	id: ID, ignored when POSTed to endpoint,
@@ -423,7 +421,7 @@ If type == “TEST” the server will return a response as if this order is succ
 }
 </pre>
 
-**ExtraCharge**:
+#### ExtraCharge:
 <pre>
 {
 	id: ID, ignored when POSTed to entpoint,
@@ -437,7 +435,7 @@ If type == “TEST” the server will return a response as if this order is succ
 }
 </pre>
 
-**Discount**:
+#### Discount:
 <pre>
 {
 	id: ID, ignored when POSTed to endpoint,
@@ -531,7 +529,7 @@ If type == “TEST” the server will return a response as if this order is succ
 }
 </pre>
 
-**Pager**:
+#### Pager:
 <pre>
 {
 	count: integer, total number of records that match the query
@@ -683,7 +681,7 @@ The rest are same as register. addressName if it matches an existing name of an 
 }
 </pre>
 
-**Customer**:
+#### Customer:
 <pre>
 {
 	id: ID
@@ -702,7 +700,7 @@ The rest are same as register. addressName if it matches an existing name of an 
 }
 </pre>
 
-**Rewards**:
+#### Rewards:
 <pre>
 {
 	totalRewardPoints
@@ -717,7 +715,7 @@ The rest are same as register. addressName if it matches an existing name of an 
 }
 </pre>
 
-**Address**:
+#### Address:
 <pre>
 {
 	id: ID
@@ -887,7 +885,7 @@ The rest are same as register. addressName if it matches an existing name of an 
 }
 </pre>
 
-**Favourite**:
+#### Favourite:
 <pre>
 {
 	product: ID of product,
@@ -945,7 +943,7 @@ The rest are same as register. addressName if it matches an existing name of an 
 }
 </pre>
 
-**Customer (extended properties)**:
+#### Customer (extended properties):
 <pre>
 {
 	memberId: string,
@@ -977,17 +975,16 @@ The rest are same as register. addressName if it matches an existing name of an 
 
 # MasterDemo Extensions
 
-
 The Brand object has the following additional properties:
 
-**Brand**:
+#### Brand:
 <pre>
 {
 	colors: Color object
 }
 </pre>
 
-**Color**:
+#### Color:
 <pre>
 {
 	backgroundHeader: string, hexadecimal color code, eg “#123456”, can be null, this is the color code for the background color of the header bar on the app
@@ -1001,7 +998,7 @@ The Brand object has the following additional properties:
 
 # Cama Cafe Extensions
 
-**Product**:
+#### Product:
 <pre>
 {
 	priceDescription: string, can be null, describes why the price is that value, this is to inform the customer when there is a discount, if null don’t show this value
