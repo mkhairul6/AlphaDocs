@@ -71,6 +71,29 @@
 
 ## Entities Index
 
+* <a href="#address">Address</a>
+* <a href="#availability">Availability</a>
+* <a href="#brand">Brand</a>
+* <a href="#banner">Banner</a>
+* <a href="#category">Category</a>
+* <a href="#customer">Customer</a>
+* <a href="#coordinates">Coordinates</a>
+* <a href="#discount">Discount</a>
+* <a href="#extracharge">ExtraCharge</a>
+* <a href="#product">Product</a>
+* <a href="#store">Store</a>
+* <a href="#table">Table</a>
+* <a href="#tag">Tag</a>
+* <a href="#modifier-group">Modifier Group</a>
+* <a href="#modifier">Modifier</a>
+* <a href="#modifieritem">ModifierItem</a>
+* <a href="#order">Order</a>
+* <a href="#guest">OrderItem</a>
+* <a href="#payment">Payment</a>
+* <a href="#pager">Pager</a>
+* <a href="#rewards">Rewards</a>
+* <a href="#variant">Variant</a>
+
 # Basics of Calling the API
 
 It will be at something like `/api/<version>/<service>/<brandCode>`
@@ -712,20 +735,6 @@ The rest are same as register. addressName if it matches an existing name of an 
 	description
 	earnExclusionCategories: List of Categories
 	redeemExclusionCategories: List of Categories
-}
-</pre>
-
-#### Address:
-<pre>
-{
-	id: ID
-	name
-	line1
-	line2
-	city
-	countryCode: 2-character string country code
-	postalCode
-	string: full one line display string of the address
 }
 </pre>
 
