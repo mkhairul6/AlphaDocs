@@ -552,7 +552,7 @@ The following are descriptions for each status (values in brackets are what is d
 
 * **PLACED (Pending)**: Order is placed and pending acceptance
 * **QUEUED (Pre-order)**: Order is queued to be prepared at a future time (for pre-orders, i.e. ** fulfillmentTime is not null). This happens when the order is accepted
-** **PREPARATION (Preparing)**: Order is being prepared in the kitchen. This happens when the order is accepted (for ASAP orders), or when the order is close to fulfilment time (for pre-orders) i.e fulfilment time - delivery time - kitchen prep time
+* **PREPARATION (Preparing)**: Order is being prepared in the kitchen. This happens when the order is accepted (for ASAP orders), or when the order is close to fulfilment time (for pre-orders) i.e fulfilment time - delivery time - kitchen prep time
 * **READY (Ready / In-Transit)**: Order is ready for serving or delivery. This happens automatically based on the kitchen preparation time set by the store administrator
 * **COMPLETED**: Order is completed. This only happens when someone completes the order
 * **CANCELLED**: Order is cancelled for some reason. An order can be cancelled at any time.
