@@ -1,9 +1,8 @@
 # (uns)Table of Contents
-1. <a href="#history-of-changes">History of Changes</a>
-2. <a href="#alpha-entities-overview">Alpha Entities Overview</a>
+1. <a href="#alpha-entities-overview">Alpha Entities Overview</a>
 	* <a href="#entities-index">Entities Index</a>
-3. <a href="#basics-of-calling-the-api">Basics of Calling the API</a>
-4. <a href="#api">API</a>
+2. <a href="#basics-of-calling-the-api">Basics of Calling the API</a>
+3. <a href="#api">API</a>
 	* <a href="#getting-stores">Getting Stores</a>
 	* <a href="#getting-the-menu">Getting the Menu</a>
 	* <a href="#posting-an-order">Posting an Order</a>
@@ -27,35 +26,12 @@
 	* <a href="#get-favourite-product-list-for-customer">Get Favourite Product List for Customer</a>
 	* <a href="#add-a-favourite-product-for-customer">Add a Favourite Product for Customer</a>
 	* <a href="#remove-a-favourite-product-for-customer">Remove a Favourite Product for Customer</a>
-5. <a href="#collision-8-extensions">Collision 8 Extensions</a>
+4. <a href="#collision-8-extensions">Collision 8 Extensions</a>
 	* <a href="#get-all-customers">Get All Customers</a>
 	* <a href="#posting-an-order-1">Posting an Order</a>
-6. <a href="#masterdemo-extensions">MasterDemo Extensions</a>
-7. <a href="cama-cafe-extensions">Cama Cafe Extensions</a>
+5. <a href="#masterdemo-extensions">MasterDemo Extensions</a>
+6. <a href="cama-cafe-extensions">Cama Cafe Extensions</a>
 	* <a href="#get-app-translation-dictionary">Get App Translation Dictionary</a>
-
-# History of Changes
-
-* 24 Oct 2016 - Added tax property to ExtraCharge
-* 21 Oct 2016 - Added LINE properties to Customer Registration and Login API
-* 23 Sep 2016 - Added authentication 
-* 18 July 2016 - Added Collision 8 Extension
-* 15 July 2016 - Added CREDITS as a new payment type
-* 11 July 2016 - Added enableProductImages property to Brand
-* 5 July 2016 - Added defaultImageId property to Brand
-* 1 July 2016 - Added information regarding auth tokens in the overview section, added type property to tag
-* 9 June 2016 - Added deviceToken property to Customer Registration and Login API, added Customer Logout API
-* 6 June 2016 - Added showAll property to Getting the Menu API
-* 1 June 2016 - Added addressId property to Update a Customer API
-* 24 May 2016 - Added accessToken property to Login and Register a Customer, added Accepting an Order and Cancelling an Order, added productData parameter to Get Favourite Product List
-* 23 May 2016 - Added code property to Register a Customer, added number property to Reading all Orders
-* 7 Apr 2016 - Added brand property to menu API
-* 6 Apr 2016 - Added tags property to documentation
-* 4 Apr 2016 - Added imageId to store API
-* 24 Mar 2016 - Added store specific menu
-* 10 Mar 2016 - Add store dine-in, take away, opening and deliver hours. Added special request to order item. Fixed getting stores API, to return proper structure { success, stores }
-* 8 Mar 2016 - Added Tables to Stores, added Table to Order, Added filters and sorting to Orders request
-
 
 # Alpha Entities Overview
 
