@@ -639,7 +639,7 @@ The following are descriptions for each status (values in brackets are what is d
 * -100 : Email already exists
 * -101:  Email already exists and account is connected to Facebook
 * -102: Email already exists and account is connected to Google Plus
-* -103: Email already exists and account is connected to LINE
+* -106: Email already exists and account is connected to LINE
 
 ## Update a Customer
 
