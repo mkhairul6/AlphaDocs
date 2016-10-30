@@ -26,6 +26,7 @@
 	* <a href="#get-favourite-product-list-for-customer">Get Favourite Product List for Customer</a>
 	* <a href="#add-a-favourite-product-for-customer">Add a Favourite Product for Customer</a>
 	* <a href="#remove-a-favourite-product-for-customer">Remove a Favourite Product for Customer</a>
+	* <a href="#getting-all-promotions">Getting all Promotions</a>
 4. <a href="#collision-8-extensions">Collision 8 Extensions</a>
 	* <a href="#get-all-customers">Get All Customers</a>
 	* <a href="#posting-an-order-1">Posting an Order</a>
@@ -67,6 +68,7 @@
 * <a href="#orderitem">OrderItem</a>
 * <a href="#payment">Payment</a>
 * <a href="#pager">Pager</a>
+* <a href="#promotion">Promotion</a>
 * <a href="#rewards">Rewards</a>
 * <a href="#variant">Variant</a>
 
@@ -319,8 +321,9 @@ Note that at BEDOK, only takeaway is available for that product.
 	test: boolean, default false, if true, it’s as if type == “TEST” but order will behave correctly as the intended type,
 	fulfillmentTime: milliseconds since epoch time, time the customer wants to be fulfilled, if null, means NOW
 	customer: Guest object, optional,
-	phone: string, optional, if passed in sets the phone number that the merchant can call specifically for that order
-	voucher: ID of the voucher instance assigned to the customer,
+	phone: string, optional, if passed in sets the phone number that the merchant can call specifically for that order,
+	vouchers: Array of Voucher IDs to be applied to this order,
+	promoCodes: Array of promo codes to be applied to this order,
 	rewardPoints: integer,
 	pax: integer, number of people eating in (only applicable for DINE_IN)
 }
@@ -695,7 +698,8 @@ The rest are same as register. addressName if it matches an existing name of an 
 	addresses: List of Addresses
 	rewards: Rewards object
 	credits: decimal, number of credits the customer has left, should only be used for display
-	countryCode: 2-character string country code
+	countryCode: 2-character string country code,
+	vouchers: Array of Vouchers this customer has in their account, this can be applied on an Order
 }
 </pre>
 
@@ -908,6 +912,73 @@ The rest are same as register. addressName if it matches an existing name of an 
 	success: true
 }
 </pre>
+
+### Getting all Promotions
+
+`http://<server>/api/1.0/promotions/<brandCode>`
+
+Promotions are to be displayed only. There are two types of promotions - vouchers and promo codes. Vouchers are automatically given to customers in their account. Customers can then choose which vouchers to apply into their orders. Promo codes on the other hand are free to be used at any time. They simply have to be entered into the order. Of course, terms and conditions still apply.
+
+Apps should pass in vouchers and/or promo codes selected by the customer to Alpha with "test" = true, to query whether the promotion(s) can be applied. Alpha will return the order with discounts if the promotion(s) are valid. This should be presented to the customer before paying. 
+
+### Response:
+<pre>
+{
+	success: true,
+	promotions: Array of Promotions
+}
+</pre>
+
+#### Promotion:
+<pre>
+{
+	id: ID,
+	name: string,
+	description: string,
+	imageId: string,
+	tnc: string, terms and conditions,
+	benefitType: "FREE_ITEM|DOLLAR_DISCOUNT_ON_ITEM|DOLLAR_DISCOUNT_ON_CART|PERCENTAGE_DISCOUNT_ON_ITEM|PERCENTAGE_DISCOUNT_ON_CART", see Benefit Types below for more details,
+	periodType: "LIMITED_PERIOD|FOREVER",
+	periodFrom: millseconds since epochTime, when this promotion starts, only applicable when periodType == "LIMITED_PERIOD",
+	periodFrom: millseconds since epochTime, last day before this promotion ends, only applicable when periodType == "LIMITED_PERIOD",
+	fulfillmentType: "ANY_TIME|CUSTOM", ANY_TIME means this can be redeemed anytime during the promotion period, CUSTOM means can only be redeemed during the fulfillment times,
+	fulfillmentTimes: Array of Availabilities, can only be redeemed during these hours, only applicable when fulfillmentType == "CUSTOM",
+	publishType: "VOUCHERS|PROMO_CODE", 
+	exclusive: boolean, if true this promotion can only be the only promotion used in an order,
+	code: string, the promo code, only appicable when publsihType == "PROMO_CODE",
+	freeType: "PRODUCT|MODIFIER", if PRODUCT the free item will be a specific product, if MODIFIER, it will be a specific modifier, only applicable when benefitType == "FREE_ITEM",
+	freeProduct: ID of Product or null, only applicable when freeType == "PRODUCT",
+	freeModifier: ID of Modifier or null, only applicable when freeType == "MODIFIER",
+	takeAway: boolean, whether this promotion can be used for take away orders,
+	dineIn: boolean, whether this promotion can be used for dine in orders,
+	delivery: boolean, whether this promotion can be used for delivery orders,
+	takeAwayStores: Array of Store IDs, only applicable when takeAway is true, and if empty, means ALL stores are applicable,
+	dineInStores: Array of Store IDs, only applicable when dineIn is true, and if empty, means ALL stores are applicable,
+	deliveryStores: Array of Store IDs, only applicable when delivery is true, and if empty, means ALL stores are applicable,
+	emailDomains: Array of strings, e.g. of a string - "@eunoia.asia", only customers whose emails match any of these domains can apply this promotion,
+	paymentTypes: Array of strings, currently only "CASH", "MASTERPASS", "PAYPAL", "STRIPE", only orders paid with any of these payment methods are applicable, if empty all payment types are applicable,
+	dollarDiscount: decimal number, dollars off a product or cart, only applicable when benefitType == "DOLLAR_DISCOUNT_ON_ITEM" || "DOLLARY_DISCOUNT_ON_CART",
+	percentageDiscount: decimal number, x% off off a product or cart, only applicable when benefitType == "PERCENTAGE_DISCOUNT_ON_ITEM" || "PERCENTAGE_DISCOUNT_ON_CART",
+	criteriaProducts: Array of Product IDs, products that will receive dollar or percentage discount, only applicable when benefitType == "DOLLAR_DISCOUNT_ON_ITEM" || "PERCENTAGE_DISCOUNT_ON_ITEM",
+	minAmountSpent: decimal number, minimum amount that must be spent (sub-total) before this promotion can be applied,
+	maxDiscountValue: decimal number, maximum amount of discount that will be capped when applying this promotion,
+	stockCount: "LIMITED|UNLIMITED", if LIMITED, this promotion can be only be redeemed stockLimit number of times,
+	stockLimit: number of times this promotion can be redeemed, only applicable when stockCount == "LIMITED",
+	usageCount: "LIMITED|UNLIMITED", if LIMITED, this promotion can be only be redeemed usageLimit number of times per customer,
+	usageLimit: number of times this promotion can be redeemed by a customer, only applicable when usageCount == "LIMITED",
+	redeemed: number of times this promotion has been redeemed by any customers, apps should simply not allow this promotion to be applied when this value is equal (or greater) than stockLimit
+}
+</pre>
+
+#### Benefit Types
+
+The following are the values of this enum:
+
+* **FREE\_ITEM**: The benefit of this promotion is a free product or modifier, the product or modifier will be automatically added to the order if one is not there,
+* **DOLLAR\_DISCOUNT\_ON\_ITEM**: Dollar discount on a product that is in the criteria list of products
+* **DOLLAR\_DISCOUNT\_ON\_CART**: Dollar discount on a whole order
+* **PERCENTAGE\_DISCOUNT\_ON\_ITEM**: Percentage discount on a product that is in the criteria list of products
+* **PERCENTAGE\_DISCOUNT\_ON\_CART**: Percentage discount on a whole order
 
 # Collision 8 Extensions
 
