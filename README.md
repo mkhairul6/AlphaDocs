@@ -71,6 +71,7 @@
 * <a href="#promotion">Promotion</a>
 * <a href="#rewards">Rewards</a>
 * <a href="#variant">Variant</a>
+* <a href="#voucher">Voucher</a>
 
 # Basics of Calling the API
 
