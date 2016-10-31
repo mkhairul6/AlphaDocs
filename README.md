@@ -703,6 +703,16 @@ The rest are same as register. addressName if it matches an existing name of an 
 }
 </pre>
 
+#### Voucher:
+<pre>
+{
+	id: ID,
+	promotion: Promotion object,
+	used: integer, number of times this voucher has been used, only applicable for vouchers that can be used multiple times per customer
+}
+</pre>
+	
+
 #### Rewards:
 <pre>
 {
