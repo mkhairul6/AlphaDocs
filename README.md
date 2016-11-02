@@ -407,7 +407,7 @@ When promotions are applied, success will be false if the any of the vouchers or
 #### VoucherError:
 <pre>
 {
-	id: ID of Voucher this is invalid,
+	id: ID of Voucher that is invalid,
 	message: string, a human readable string that explains why the voucher is invalid
 }
 </pre>
