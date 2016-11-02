@@ -394,8 +394,29 @@ If type == “TEST” the server will return a response as if this order is succ
 ### Response:
 <pre>
 {
-	success: true,
-	order: Order object
+	success: true/false,
+	order: Order object,
+	vouchers: Array of VoucherErrors,
+	promoCodes: Array of PromoCodeErrors
+
+}
+</pre>
+
+When promotions are applied, success will be false if the any of the vouchers or promo codes applied are not valid. The `vouchers` property and `promoCodes` will contain details about why they are invalid.
+
+#### VoucherError:
+<pre>
+{
+	id: ID of Voucher this is invalid,
+	message: string, a human readable string that explains why the voucher is invalid
+}
+</pre>
+
+#### PromoCodeError:
+<pre>
+{
+	code: string, the promo code that is invalid,
+	message: string, a human readable string that explains why the promo code is invalid
 }
 </pre>
 
