@@ -22,7 +22,7 @@
 	* <a href="#get-eta">Get ETA</a>
 	* <a href="#get-gps-coordinates-from-address">Get GPS Coordinates from Address</a>
 	* <a href="#get-address-from-gps-coordinates">Get Address from GPS Coordinates</a>
-	* <a href="#get-closest-store-for-address">Get Closest Store from Address</a>
+	* <a href="#get-closest-store-from-address">Get Closest Store from Address</a>
 	* <a href="#get-favourite-product-list-for-customer">Get Favourite Product List for Customer</a>
 	* <a href="#add-a-favourite-product-for-customer">Add a Favourite Product for Customer</a>
 	* <a href="#remove-a-favourite-product-for-customer">Remove a Favourite Product for Customer</a>
