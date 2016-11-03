@@ -1068,7 +1068,8 @@ The Brand object has the following additional properties:
 #### Brand:
 <pre>
 {
-	colors: Color object
+	colors: Color object,
+	minAuthAmount: decimal number, if this is greater than zero, any cart total larger than this value will require authentication before payment
 }
 </pre>
 
