@@ -511,6 +511,11 @@ When promotions are applied, success will be false if the any of the vouchers or
 					"quantity": 2
 				}
 			]
+		},
+		{
+			"product": 273,
+			"quantity": 1,
+			"variant": 6
 		}
 	],
 	"discounts": [
@@ -521,7 +526,7 @@ When promotions are applied, success will be false if the any of the vouchers or
 	],
 	"payments": [
 		{
-			"amount": 38.01,
+			"amount": 49.01,
 			"type": "PAYPAL",
 			"transactionId": "PAYPAL-123456",
 			"status": "PAID",
