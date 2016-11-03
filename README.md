@@ -331,6 +331,10 @@ Note that at BEDOK, only takeaway is available for that product.
 </pre>
 
 If type == “TEST” the server will return a response as if this order is successfully placed. Useful for retrieving taxes, applying promotion codes, vouchers and so on.
+
+**Apps should not pass in any taxes and/or discounts from promotions. Those will automatically calculated and applied by Alpha when the order is posted.**
+
+<a href="#getting-all-promotions">See</a> for more details on applying promotions.
  
 #### Guest:
 <pre>
@@ -951,7 +955,9 @@ The rest are same as register. addressName if it matches an existing name of an 
 
 Promotions are to be displayed only. There are two types of promotions - vouchers and promo codes. Vouchers are automatically given to customers in their account. Customers can then choose which vouchers to apply into their orders. Promo codes on the other hand are free to be used at any time. They simply have to be entered into the order. Of course, terms and conditions still apply.
 
-Apps should pass in vouchers and/or promo codes selected by the customer to Alpha with "test" = true, to query whether the promotion(s) can be applied. Alpha will return the order with discounts if the promotion(s) are valid. This should be presented to the customer before paying. 
+Apps should pass in vouchers and/or promo codes selected by the customer to Alpha with "test" = true, to query whether the promotion(s) can be applied. Alpha will return the order with discounts if the promotion(s) are valid. This should be presented to the customer before paying.
+
+Note that payments will be not validated by Alpha. Users usually pay first before the app posts the order to Alpha. Therefore, apps **must** restrict the payment options when a promotion that requires only certain payments is applied.
 
 ### Response:
 <pre>
