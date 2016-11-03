@@ -334,7 +334,7 @@ If type == “TEST” the server will return a response as if this order is succ
 
 **Apps should not pass in any taxes and/or discounts from promotions. Those will automatically calculated and applied by Alpha when the order is posted.**
 
-<a href="#getting-all-promotions">See</a> for more details on applying promotions.
+See <a href="#getting-all-promotions">here</a> for more details on applying promotions.
  
 #### Guest:
 <pre>
