@@ -475,7 +475,7 @@ When promotions are applied, success will be false if the any of the vouchers or
 
 #### Samples:
 
-##### Posting a test order: `http://alpha.savantdegrees.com/api/1.0/order/ALT`
+##### Posting a test order: `http://alpha.savantdegrees.com/api/1.0/order/ALT?authorization=jO0fHEBl1C2d0WOGGIJt6amAwI84msle`
 <pre>
 {
 	"type": "TEST",
@@ -503,7 +503,7 @@ When promotions are applied, success will be false if the any of the vouchers or
 					"quantity": 1
 				},
 				{
-                  			"modifierId": 265,
+					"modifierId": 265,
 					"quantity": 1
 				},
 				{
@@ -515,18 +515,18 @@ When promotions are applied, success will be false if the any of the vouchers or
 	],
 	"discounts": [
 		{
-          "amount": 9.99,
-			"reason": "$9.99 off all bills promotion"
+			"amount": 2.99,
+			"reason": "$2.99 off for using this cool app"
 		}
 	],
 	"payments": [
-	    {
-	       "amount": 33.88,
-	       "type": "PAYPAL",
-	       "transactionId": "PAYPAL-123456",
-	       "status": "PAID",
-	       "paidTime": 1457273565769
-	   }
+		{
+			"amount": 38.01,
+			"type": "PAYPAL",
+			"transactionId": "PAYPAL-123456",
+			"status": "PAID",
+			"paidTime": 1457273565769
+		}
 	],
 	"store": 1
 }
