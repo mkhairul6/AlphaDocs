@@ -949,7 +949,7 @@ The rest are same as register. addressName if it matches an existing name of an 
 }
 </pre>
 
-### Getting all Promotions
+## Getting all Promotions
 
 `http://<server>/api/1.0/promotions/<brandCode>`
 
