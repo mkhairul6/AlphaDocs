@@ -1101,9 +1101,6 @@ The Brand object has the following additional properties:
 
 `http://mastercard.savantdegrees.com/api/1.0/translate/masterdemo/dictionary`
 
-### POST Parameters:
-<ul><li>language: "en|zh|id|jp", if missing, defaults to "en"</li>
-</ul>
 
 ### Response:
 
