@@ -31,9 +31,9 @@
 	* <a href="#get-all-customers">Get All Customers</a>
 	* <a href="#posting-an-order-1">Posting an Order</a>
 5. <a href="#masterdemo-extensions">MasterDemo Extensions</a>
-	* <a href="#get-app-translation-dictionary">Get App Translation Dictionary</a>
+	* <a href="#get-app-translation-dictionary">Get App Translation Dictionary (MasterDemo)</a>
 6. <a href="cama-cafe-extensions">Cama Cafe Extensions</a>
-	* <a href="#get-app-translation-dictionary-2">Get App Translation Dictionary</a>
+	* <a href="#get-app-translation-dictionary-2">Get App Translation Dictionary (Cama Cafe)</a>
 
 # Alpha Entities Overview
 
@@ -1099,7 +1099,7 @@ The Brand object has the following additional properties:
 
 ## Get App Translation Dictionary
 
-`http://camacafe.savantdegrees.com/api/1.0/translate/masterdemo/dictionary`
+`http://mastercard.savantdegrees.com/api/1.0/translate/masterdemo/dictionary`
 
 ### POST Parameters:
 <ul><li>language: "en|zh|id|jp", if missing, defaults to "en"</li>
