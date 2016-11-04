@@ -31,8 +31,9 @@
 	* <a href="#get-all-customers">Get All Customers</a>
 	* <a href="#posting-an-order-1">Posting an Order</a>
 5. <a href="#masterdemo-extensions">MasterDemo Extensions</a>
-6. <a href="cama-cafe-extensions">Cama Cafe Extensions</a>
 	* <a href="#get-app-translation-dictionary">Get App Translation Dictionary</a>
+6. <a href="cama-cafe-extensions">Cama Cafe Extensions</a>
+	* <a href="#get-app-translation-dictionary-2">Get App Translation Dictionary</a>
 
 # Alpha Entities Overview
 
@@ -1095,6 +1096,32 @@ The Brand object has the following additional properties:
 	bottomBarBackground: string, background color for bottom bar
 }
 </pre>
+
+## Get App Translation Dictionary
+
+`http://camacafe.savantdegrees.com/api/1.0/translate/masterdemo/dictionary`
+
+### POST Parameters:
+<ul><li>language: "en|zh|id|jp", if missing, defaults to "en"</li>
+</ul>
+
+### Response:
+
+A map of translation key-values. E.g.
+
+<pre>
+{
+	"sign.in": "登入",
+	"email": "電子郵件",
+	"password": "密碼",
+	"forgot.password": "忘記密碼",
+	"registered": "註冊",
+	"sign.in.facebook": "使用 Facebook 登錄",
+	"sign.in.line": "使用 LINE 登錄"
+}
+</pre>
+
+If a key is missing from the response, the app should display `<key>`. For example, if the translation for “email” is missing, the app should display `<email>`. This makes it obvious that a translation is missing, so it can be added to the API.
 
 # Cama Cafe Extensions
 
