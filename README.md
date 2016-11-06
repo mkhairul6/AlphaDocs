@@ -87,7 +87,7 @@ It will be at something like `/api/<version>/<service>/<brandCode>`
 * Images will have the property `imageId`. The value will be something like “bidfc6b9do2ugqf9jcfg” This is an ID to a resource on Cloudinary. It can also be null. The URL for the image will be `http://res.cloudinary.com/savantdegrees/image/upload/c_<crop-type>,h_<height>,w_<width/<id>` E.g <http://res.cloudinary.com/savantdegrees/image/upload/c_fill,h_200,w_200/bidfc6b9do2ugqf9jcfg> There are many ways to customize the image, get different dimensions and weird transformations. See <http://cloudinary.com/documentation/image_transformations>
 * For customer related APIs, an `authToken` is required (see Login Customer)
 * Any customer related requests with an invalid authToken will return `{ success: false, code: -666, message: “Some message you can display to the user” }`. The user should be redirected to the login flow
-* If the API Authentication Key is set at a brand, every API request to that brand must pass in that key. The key can be passed in as a request parameter “authorization” or a request header “Authorization”. E.g. <http://alpha.savantdegrees.com/api/1.0/menu/ALT?authorization=jO0fHEBl1C2d0WOGGIJt6amAwI84msle>
+* If the API Authentication Key is set at a brand, every API request to that brand must pass in that key. The key can be passed in as a request parameter `authorization` or a request header `Authorization`. E.g. <http://alpha.savantdegrees.com/api/1.0/menu/ALT?authorization=jO0fHEBl1C2d0WOGGIJt6amAwI84msle>
 * It is recommended to set this key before you go live otherwise anyone can simply send orders to that brand
 
 # API
@@ -297,9 +297,9 @@ Sample: <http://alpha.savantdegrees.com/api/1.0/stores/ALT>
 </pre>
 
 #### Samples:
-1. <http://alpha.savantdegrees.com/api/1.0/menu/ALT>
-2. <http://alpha.savantdegrees.com/api/1.0/menu/MLP>
-3. <http://alpha.savantdegrees.com/api/1.0/menu/MLP/BEDOK>
+1. <http://alpha.savantdegrees.com/api/1.0/menu/ALT?authorization=jO0fHEBl1C2d0WOGGIJt6amAwI84msle>
+2. <http://alpha.savantdegrees.com/api/1.0/menu/MLP?authorization=jO0fHEBl1C2d0WOGGIJt6amAwI84msle>
+3. <http://alpha.savantdegrees.com/api/1.0/menu/MLP/BEDOK?authorization=jO0fHEBl1C2d0WOGGIJt6amAwI84msle>
 
 Note that at BEDOK, only takeaway is available for that product.
 
@@ -1074,6 +1074,8 @@ The following are the values of this enum:
 </pre>
 
 # MasterDemo Extensions
+
+All requests to MasterDemo API should include the `language` parameter. This is a 2 letter ISO 639-1 code that will return the content in that language.
 
 The Brand object has the following additional properties:
 
