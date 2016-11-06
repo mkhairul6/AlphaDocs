@@ -157,7 +157,7 @@ It will be at something like `/api/<version>/<service>/<brandCode>`
 }
 </pre>
 
-Sample: <http://alpha.savantdegrees.com/api/1.0/stores/ALT>
+Sample: <http://alpha.savantdegrees.com/api/1.0/stores/ALT?authorization=jO0fHEBl1C2d0WOGGIJt6amAwI84msle>
 
 ## Getting the Menu
 
