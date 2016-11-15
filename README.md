@@ -275,14 +275,15 @@ Sample: <http://alpha.savantdegrees.com/api/1.0/stores/ALT?authorization=jO0fHEB
 {
 	id: ID,
 	imageId: string,
-	product: ID of product this banner is for, or null,
+	product: ID of product this banner is for, or null, apps should go directly to this product page if it exists
 	sortIndex: integer,
 	link: URL string or null,
 	name: string,
 	startTime: milliseconds since epochTime, time to start showing this banner,
 	endTime: milliseconds since epochTime, time to stop showing this banner,
-	target: “PRODUCT|LINK”,
-	position: ”TOP|BOTTOM” 
+	target: “PRODUCT|LINK|NONE”,
+	position: ”TOP|BOTTOM” or null,
+	description: string
 }
 </pre>
 
