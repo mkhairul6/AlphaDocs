@@ -327,7 +327,8 @@ Note that at BEDOK, only takeaway is available for that product.
 	vouchers: Array of Voucher IDs to be applied to this order,
 	promoCodes: Array of promo codes to be applied to this order,
 	rewardPoints: integer,
-	pax: integer, number of people eating in (only applicable for DINE_IN)
+	pax: integer, number of people eating in (only applicable for DINE_IN),
+	masterpassPayment: object, optional to pay using masterpass
 }
 </pre>
 
@@ -393,6 +394,19 @@ See <a href="#getting-all-promotions">here</a> for more details on applying prom
 	city: string
 	countryCode: 2 character string, ISO 3166-2 country code
 	postalCode: string
+}
+</pre>
+
+#### MasterpassPayment
+<pre>
+{
+	pin: string, 6 digit pin for verification,
+	transactionId: string, transaction Id from the pre checkout API response,
+	cardId: string, id of selected card, 
+	addressId: string, id of selected address,
+	providerRef: string, from the pre checkout API response,
+	cardType: string, card type information from the encoded wallet data,
+	deviceToken: string, device token used for push notifications
 }
 </pre>
 
@@ -1154,3 +1168,45 @@ A map of translation key-values. E.g.
 </pre>
 
 If a key is missing from the response, the app should display `<key>`. For example, if the translation for “email” is missing, the app should display `<email>`. This makes it obvious that a translation is missing, so it can be added to the API.
+
+# MasterPass - WireCard
+
+## Pairing request
+
+`http://<server>/api/1.0/wirecard/pairingRequest/<brandCode>`
+
+###Response:
+
+<pre>
+{
+	success: true,
+	message: null or string if failed,
+	transactionId: string,
+	requestId: string,
+	injectedJavaScript: string, to be injected into the webview on the app,
+	providerRef: null, string, not used,
+	providerTransactionId: null,
+	walletData: null,
+	cardToken: null, string, not used,
+}
+</pre>
+
+##Pre Checkout request
+
+`http://<server>/api/1.0/wirecard/precheckoutRequest/<brandCode>`
+
+###Response:
+
+<pre>
+{
+	success: true,
+	message: null or string if failed,
+	transactionId: string,
+	requestId: string,
+	injectedJavaScript: string, to be injected into	the webview on the app,
+	providerRef: string, use while placing order,
+	providerTransactionId: null, string, not used,
+	walletData: string, decode using base64, sample can be found at http://docs.elastic-payments.com/?s=wirecardapac#alternative-payments-masterpass,
+	cardToken: null, string, not used, 
+}
+</pre>
