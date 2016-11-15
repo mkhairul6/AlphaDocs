@@ -275,7 +275,7 @@ Sample: <http://alpha.savantdegrees.com/api/1.0/stores/ALT?authorization=jO0fHEB
 {
 	id: ID,
 	imageId: string,
-	product: ID of product this banner is for, or null, apps should go directly to this product page if it exists
+	product: ID of product this banner is for, or null, apps should go directly to this product page if it is not null
 	sortIndex: integer,
 	link: URL string or null,
 	name: string,
@@ -283,7 +283,8 @@ Sample: <http://alpha.savantdegrees.com/api/1.0/stores/ALT?authorization=jO0fHEB
 	endTime: milliseconds since epochTime, time to stop showing this banner,
 	target: “PRODUCT|LINK|NONE”,
 	position: ”TOP|BOTTOM” or null,
-	description: string
+	description: string,
+	type: "GENERAL|ABOUT_BRAND|ONBOARDING" or null
 }
 </pre>
 
