@@ -681,7 +681,7 @@ The following are descriptions for each status (values in brackets are what is d
 
 ### Additional POST Parameters:
 <ul><li>authToken: authentication token of the user</li>
-<li>addressId: ID of address to update, if not passed in when address data is passed in, the system will try to find the address to update by its name</li></ul>
+<li>addressId: ID of address to update, if not passed in when address data is passed in the system will create a new address for the customer</li></ul>
 
 The rest are same as register. addressName if it matches an existing name of an address, will update that address, otherwise, will add a new address.
 
