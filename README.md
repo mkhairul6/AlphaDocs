@@ -34,6 +34,9 @@
 	* <a href="#get-app-translation-dictionary">Get App Translation Dictionary</a>
 6. <a href="#cama-cafe-extensions">Cama Cafe Extensions</a>
 	* <a href="#get-app-translation-dictionary-2">Get App Translation Dictionary</a>
+7. <a href="#masterpass-wirecard">MasterPass - WireCard</a>
+	* <a href="#pairing-request">Pairing request</a>
+	* <a href="#precheckout-request">Precheckout request</a>
 
 # Alpha Entities Overview
 
@@ -1175,7 +1178,13 @@ If a key is missing from the response, the app should display `<key>`. For examp
 
 `http://<server>/api/1.0/wirecard/pairingRequest/<brandCode>`
 
+### POST Parameters:
+<ul><li>authToken: string</li>
+<li>deviceToken: device token for push notifications</li></ul>
+
 ###Response:
+
+The url `http://<server>/masterpass` should be opened inside a WebView within the app with the injected JavaScript (Eg: see [here](https://facebook.github.io/react-native/docs/webview.html#injectedjavascript)) from the response. After the user pairs with MasterPass on the WebView, if the URL contains `pairingCancel` or `pairingFail`, then the pairing operation has not been completed and the app must navigate the user away from the WebView. If the URL contains `pairingSuccess`, then the pairing has been completed successfully. 
 
 <pre>
 {
@@ -1183,7 +1192,7 @@ If a key is missing from the response, the app should display `<key>`. For examp
 	message: null or string if failed,
 	transactionId: string,
 	requestId: string,
-	injectedJavaScript: string, to be injected into the webview on the app,
+	injectedJavaScript: string, to be injected into the WebView on the app,
 	providerRef: null, string, not used,
 	providerTransactionId: null,
 	walletData: null,
@@ -1191,11 +1200,17 @@ If a key is missing from the response, the app should display `<key>`. For examp
 }
 </pre>
 
-##Pre Checkout request
+##Precheckout request
 
 `http://<server>/api/1.0/wirecard/precheckoutRequest/<brandCode>`
 
+### POST Parameters:
+<ul><li>authToken: string</li>
+<li>deviceToken: device token for push notifications</li></ul>
+
 ###Response:
+
+The response provides a base64 encoded wallet data (sample [here]("http://docs.elastic-payments.com/?s=wirecardapac#alternative-payments-masterpass")) which can be used to display cards and shipping address options to the customer in the app. The selected information can be used in the place order request to pay using MasterPass. If the precheckout request fails, redirect the user to pair with their wallet again. 
 
 <pre>
 {
@@ -1206,7 +1221,7 @@ If a key is missing from the response, the app should display `<key>`. For examp
 	injectedJavaScript: string, to be injected into	the webview on the app,
 	providerRef: string, use while placing order,
 	providerTransactionId: null, string, not used,
-	walletData: string, decode using base64, sample can be found at http://docs.elastic-payments.com/?s=wirecardapac#alternative-payments-masterpass,
+	walletData: string, decode using base64,
 	cardToken: null, string, not used, 
 }
 </pre>
