@@ -674,9 +674,7 @@ The following are descriptions for each status (values in brackets are what is d
 <li>addressPostalCode</li>
 <li>deviceToken: device token for push notifications</li>
 <li>deviceType: “ANDROID|IOS”</li>
-<li>nationalityCode: 2-character string ISO 3166-2 country code</li>
-<li>currentPin: string, current 6 digit PIN, required when updating 6 digit PIN</li>
-<li>pin: string, new 6 digit PIN, required when updating 6 digit PIN</li></ul>
+<li>nationalityCode: 2-character string ISO 3166-2 country code</li></ul>
 
 ### Response:
 <pre>
@@ -701,7 +699,9 @@ The following are descriptions for each status (values in brackets are what is d
 
 ### Additional POST Parameters:
 <ul><li>authToken: authentication token of the user</li>
-<li>addressId: ID of address to update, if not passed in when address data is passed in the system will create a new address for the customer</li></ul>
+<li>addressId: ID of address to update, if not passed in when address data is passed in the system will create a new address for the customer</li>
+<li>currentPin: string, current 6 digit PIN, required when updating 6 digit PIN</li>
+<li>pin: string, new 6 digit PIN, required when updating 6 digit PIN</li></ul>
 
 The rest are same as register.
 
