@@ -1020,7 +1020,7 @@ Note that payments will be not validated by Alpha. Users usually pay first befor
 
 The following are the values of this enum:
 
-* **FREE\_ITEM**: The benefit of this promotion is a free product or modifier, the product or modifier will be automatically added to the order if one is not there,
+* **FREE\_ITEM**: The benefit of this promotion is a free product or modifier. Apps should remind the user the item is not added to their order if it is not there. Otherwise, the server will simply return an error anyway.
 * **DOLLAR\_DISCOUNT\_ON\_ITEM**: Dollar discount on a product that is in the criteria list of products
 * **DOLLAR\_DISCOUNT\_ON\_CART**: Dollar discount on a whole order
 * **PERCENTAGE\_DISCOUNT\_ON\_ITEM**: Percentage discount on a product that is in the criteria list of products
