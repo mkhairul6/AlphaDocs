@@ -37,6 +37,7 @@
 7. <a href="#masterpass-with-wirecard">MasterPass with WireCard</a>
 	* <a href="#pairing-request">Pairing request</a>
 	* <a href="#precheckout-request">Precheckout request</a>
+	* <a href="#create-pin">Create PIN</a>
 
 # Alpha Entities Overview
 
@@ -673,7 +674,9 @@ The following are descriptions for each status (values in brackets are what is d
 <li>addressPostalCode</li>
 <li>deviceToken: device token for push notifications</li>
 <li>deviceType: “ANDROID|IOS”</li>
-<li>nationalityCode: 2-character string ISO 3166-2 country code</li></ul>
+<li>nationalityCode: 2-character string ISO 3166-2 country code</li>
+<li>currentPin: string, current 6 digit PIN, required when updating 6 digit PIN</li>
+<li>pin: string, new 6 digit PIN, required when updating 6 digit PIN</li></ul>
 
 ### Response:
 <pre>
@@ -1182,25 +1185,18 @@ If a key is missing from the response, the app should display `<key>`. For examp
 <ul><li>authToken: string</li>
 <li>deviceToken: device token for push notifications</li></ul>
 
-###Response:
+### Response:
 
 The url `http://<server>/masterpass` should be opened inside a WebView within the app with the injected JavaScript (Eg: see [here](https://facebook.github.io/react-native/docs/webview.html#injectedjavascript)) from the response. After the user pairs with MasterPass on the WebView, if the URL contains `pairingCancel` or `pairingFail`, then the pairing operation has not been completed and the app must navigate the user away from the WebView. If the URL contains `pairingSuccess`, then the pairing has been completed successfully. 
 
 <pre>
 {
 	success: true,
-	message: null or string if failed,
-	transactionId: string,
-	requestId: string,
 	injectedJavaScript: string, to be injected into the WebView on the app,
-	providerRef: null, string, not used,
-	providerTransactionId: null,
-	walletData: null,
-	cardToken: null, string, not used,
 }
 </pre>
 
-##Precheckout request
+## Precheckout request
 
 `http://<server>/api/1.0/wirecard/precheckoutRequest/<brandCode>`
 
@@ -1209,20 +1205,34 @@ The url `http://<server>/masterpass` should be opened inside a WebView within th
 <li>amount: decimal number</li>
 <li>deviceToken: device token for push notifications</li></ul>
 
-###Response:
+### Response:
 
 The response provides a base64 encoded wallet data (sample [here]("http://docs.elastic-payments.com/?s=wirecardapac#alternative-payments-masterpass")) which can be used to display cards and shipping address options to the customer in the app. The selected information can be used in the place order request to pay using MasterPass. If the precheckout request fails, redirect the user to pair with their wallet again. 
 
 <pre>
 {
 	success: true,
-	message: null or string if failed,
 	transactionId: string,
 	requestId: string,
 	injectedJavaScript: string, to be injected into	the webview on the app,
 	providerRef: string, use while placing order,
-	providerTransactionId: null, string, not used,
 	walletData: string, decode using base64,
-	cardToken: null, string, not used, 
+}
+</pre>
+
+## Create PIN
+
+`http://<server>/api/1.0/customer/createPin/<brandCode>`
+
+### POST parameters:
+
+<ul><li>authToken: string</li>
+<li>pin: string, 6 digit PIN used to authenticate masterpass transactions</li></ul>
+
+### Response
+
+<pre>
+{
+	success: true
 }
 </pre>
