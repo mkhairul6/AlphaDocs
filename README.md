@@ -1206,6 +1206,7 @@ The url `http://<server>/masterpass` should be opened inside a WebView within th
 
 ### POST Parameters:
 <ul><li>authToken: string</li>
+<li>amount: decimal number</li>
 <li>deviceToken: device token for push notifications</li></ul>
 
 ###Response:
