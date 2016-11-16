@@ -34,7 +34,7 @@
 	* <a href="#get-app-translation-dictionary">Get App Translation Dictionary</a>
 6. <a href="#cama-cafe-extensions">Cama Cafe Extensions</a>
 	* <a href="#get-app-translation-dictionary-2">Get App Translation Dictionary</a>
-7. <a href="#masterpass-wirecard">MasterPass - WireCard</a>
+7. <a href="#masterpass-with-wirecard">MasterPass with WireCard</a>
 	* <a href="#pairing-request">Pairing request</a>
 	* <a href="#precheckout-request">Precheckout request</a>
 
@@ -1172,7 +1172,7 @@ A map of translation key-values. E.g.
 
 If a key is missing from the response, the app should display `<key>`. For example, if the translation for “email” is missing, the app should display `<email>`. This makes it obvious that a translation is missing, so it can be added to the API.
 
-# MasterPass - WireCard
+# MasterPass with WireCard
 
 ## Pairing request
 
