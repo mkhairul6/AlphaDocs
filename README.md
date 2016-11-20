@@ -121,6 +121,10 @@ It will be at something like `/api/<version>/<service>/<brandCode>`
 	dineInHours: Array of Availabilities,
 	takeAwayHours: Array of Availabilities,
 	deliveryHours: Array of Availabilities,
+	openingHoursString: string, a nicely formatted human readable text from the 'openingHours' property,
+	dineInHoursString: string, a nicely formatted human readable text from the 'dineInHours' property,
+	takeAwayHoursString: string, a nicely formatted human readable text from the takeAwayHours' property,
+	deliveryHoursString: string, a nicely formatted human readable text from the 'deliveryHours' property,
 	imageId: string,
 	deliveryMaxOrderValue: decimal number or null, apps should not allow a delivery order larger than this value
 	deliveryMinOrderValue: decimal number or null, apps should not allow a delivery order smaller than this value
