@@ -1139,6 +1139,13 @@ If a key is missing from the response, the app should display `<key>`. For examp
 }
 </pre>
 
+#### Modifier Group:
+<pre>
+{
+	selectionWarning: string, can be null, if not null, apps should display this value in as a warning when any modifiers in this group is selected by the user
+}
+</pre>
+
 ## Get App Translation Dictionary
 
 `http://camacafe.savantdegrees.com/api/1.0/translate/cama/dictionary`
