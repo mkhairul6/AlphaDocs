@@ -466,7 +466,8 @@ When promotions are applied, success will be false if the any of the vouchers or
 	amount: decimal, absolute amount in dollars of this extra charge,
 	name: name as specified by the admin if applicable,
 	string: human friendly value to show to customers,
-	tax: boolean, where this charge is a tax, apps may need to treat the display of taxes differently, also taxes should be displayed last
+	tax: boolean, where this charge is a tax, apps may need to treat the display of taxes differently, also taxes should be displayed last,
+	inclusive: boolean, whether this charge is inclusive or exclusive
 }
 </pre>
 
