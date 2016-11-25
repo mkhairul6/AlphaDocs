@@ -467,7 +467,7 @@ When promotions are applied, success will be false if the any of the vouchers or
 	name: name as specified by the admin if applicable,
 	string: human friendly value to show to customers,
 	tax: boolean, where this charge is a tax, apps may need to treat the display of taxes differently, also taxes should be displayed last,
-	inclusive: boolean, whether this charge is inclusive or exclusive
+	inclusive: boolean, whether this charge is already included in item price
 }
 </pre>
 
