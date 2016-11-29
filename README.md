@@ -165,7 +165,9 @@ Sample: <http://alpha.savantdegrees.com/api/1.0/stores/ALT?authorization=jO0fHEB
 
 ## Getting the Menu
 
-`http://<server>/api/1.0/menu/<brandCode>`
+`http://<server>/api/1.0/menu/<brandCode>[/<storeId>]`
+
+If `storeId` is passed in, only the available menu for that particular store is returned.
 
 ### GET Parameters:
 <ul><li>showAll: boolean, default is false, if true returns all products regardless whether they are available or not</li></ul>
@@ -305,9 +307,9 @@ Sample: <http://alpha.savantdegrees.com/api/1.0/stores/ALT?authorization=jO0fHEB
 #### Samples:
 1. <http://alpha.savantdegrees.com/api/1.0/menu/ALT?authorization=jO0fHEBl1C2d0WOGGIJt6amAwI84msle>
 2. <http://alpha.savantdegrees.com/api/1.0/menu/MLP?authorization=jO0fHEBl1C2d0WOGGIJt6amAwI84msle>
-3. <http://alpha.savantdegrees.com/api/1.0/menu/MLP/BEDOK?authorization=jO0fHEBl1C2d0WOGGIJt6amAwI84msle>
+3. <http://alpha.savantdegrees.com/api/1.0/menu/MLP/19?authorization=jO0fHEBl1C2d0WOGGIJt6amAwI84msle>
 
-Note that at BEDOK, only takeaway is available for that product.
+Note that at store 19, only takeaway is available for that product.
 
 ## Posting an Order
 
