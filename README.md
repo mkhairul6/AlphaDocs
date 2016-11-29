@@ -228,13 +228,16 @@ If `storeId` is passed in, only the available menu for that particular store is 
 	description: string,
 	sortIndex: integer, can be used for sorting Products in ascending order,
 	price: decimal number,
-	dineIn: boolean, whether this Product is available for dine-in right now,
-	delivery: boolean, whether this Product is available for delivery right now,
-	takeAway: boolean, whether this Product is available for take away right now,
+	dineIn: boolean, if Store ID is passed in, whether this Product is available for dine-in right now. If Store ID is not passed in, whether ANY Stores have this available for dine-in,
+	delivery: boolean, if Store ID is passed in, whether this Product is available for delivery right now. If Store ID is not passed in, whether ANY Stores have this available for delivery, 
+	takeAway: boolean, if Store ID is passed in, whether this Product is available for take away right now. If Store ID is not passed in, whether ANY Stores has this available for take-away,
+	allDineIn: boolean, only appears when Store ID is not passed in, whether ALL Stores have this Product avaiable for dine-in right now,
+	allTakeAway: boolean, only appears when Store ID is not passed in, whether ALL Stores have this Product avaiable for take-away right now,
+	allDelivery: boolean, only appears when Store ID is not passed in, whether ALL Stores have this Product avaiable for delivery right now,
 	categories: Array of Category IDs
 	modifierGroups: Array of Modifier Groups,
 	tags: Array of Tag IDs,
-	Variants: Array of Variants
+	variants: Array of Variants
 }
 </pre>
 
