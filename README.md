@@ -1152,6 +1152,85 @@ If a key is missing from the response, the app should display `<key>`. For examp
 }
 </pre>
 
+## Taiwan Addresses
+
+Taiwan is divided into postal zones. Each postal zone is divided into divisions. Each division has a postal code. Road names are in divisions.
+
+Apps should submit fields for delivery addresses like these:
+
+* line1: Road name (retrieved by API) followed by the custom avenue or street name that is entered by the user
+* line2: Division name (retrieved by API)
+* city: Postal zone name (retrieved by API)
+* postalCode: 3 character postal code of the division, see Get Divisions
+
+
+## Get Postal Zones
+
+`http://camacafe.savantdegrees.com/api/1.0/location/zones`
+
+### Response:
+<pre>
+{
+	success: true,
+	zones: Array of Zones
+}
+</pre>
+
+#### Zone:
+<pre>
+{
+	id: ID,
+	name: string
+}
+</pre>
+
+## Get Divisions
+
+`http://camacafe.savantdegrees.com/api/1.0/location/divisions`
+
+### GET Parameters:
+<ul><li>id: integer, ID of the Zone to get the Divisions within that Zone</li></ul>
+
+### Response:
+<pre>
+{
+	success: true,
+	divisions: Array of Divisions
+}
+</pre>
+
+#### Division:
+<pre>
+{
+	id: ID, note this is also the postal code of any address within this division
+	name: string
+}
+</pre>
+
+## Get Roads
+
+`http://camacafe.savantdegrees.com/api/1.0/location/roads`
+
+### GET Parameters:
+<ul><li>id: integer, ID of the Division to get the Roads within that Division</li></ul>
+
+### Response:
+<pre>
+{
+	success: true,
+	divisions: Array of Roads
+}
+</pre>
+
+#### Road:
+<pre>
+{
+	id: ID,
+	name: string
+}
+</pre>
+
+
 ## Get App Translation Dictionary
 
 `http://camacafe.savantdegrees.com/api/1.0/translate/cama/dictionary`
@@ -1159,7 +1238,6 @@ If a key is missing from the response, the app should display `<key>`. For examp
 ### Response:
 
 A map of translation key-values. E.g.
-
 <pre>
 {
 	"sign.in": "登入",
