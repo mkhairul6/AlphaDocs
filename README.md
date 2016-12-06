@@ -369,7 +369,8 @@ See <a href="#getting-all-promotions">here</a> for more details on applying prom
 	total: decimal, ignored when POSTed to endpoint
 	specialRequest: string, instructions provided by user when ordering,
 	variant: ID of Variant that is chosen, can be null for Products without Variants
-	variantName: string name of Variant that was chosen, ignored when POSTed to endpoint
+	variantName: string name of Variant that was chosen, ignored when POSTed to endpoint,
+	variantPrice: decimal number, price of variant chosen, if no variant was chosen, this will be null, ignored when POSTed to endpoint
 }
 </pre>
 
