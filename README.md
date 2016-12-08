@@ -211,6 +211,8 @@ If `storeId` is passed in, only the available menu for that particular store is 
 {
 	id: ID,
 	imageId: string,
+	image2Id: string,
+	image3Id: string,
 	availabilities: Array of Availabilities, if empty, this Category is available the whole day,
 	name: string,
 	description: string,
@@ -224,6 +226,8 @@ If `storeId` is passed in, only the available menu for that particular store is 
 {
 	id: ID,
 	imageId: string,
+	image2Id: string,
+	image3Id: string,
 	name: string,
 	description: string,
 	sortIndex: integer, can be used for sorting Products in ascending order,
