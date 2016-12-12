@@ -1141,6 +1141,53 @@ A map of translation key-values. E.g.
 
 If a key is missing from the response, the app should display `<key>`. For example, if the translation for “email” is missing, the app should display `<email>`. This makes it obvious that a translation is missing, so it can be added to the API.
 
+## Appending Items, Payments, and Promotions to an Existing Order
+
+`http://mastercard.savantdegrees.com/api/1.0/order/<brandCode>/append/<orderNumber>`
+
+### POST body:
+<pre>
+{
+	items: Array of OrderItems,
+	payments: Array of Payments,
+	authToken: string, authentication token of current customer, if this is passed in, it will replace the current customer to this one,
+	voucers: Array of Voucher IDs to be applied to this order,
+	promoCodes: Array of promo codes to be applied to this order
+}
+</pre>
+
+### Response:
+<pre>
+{
+	success: true/false,
+	order: Order object,
+	vouchers: Array of VoucherErrors,
+	promoCodes: Array of PromoCodeErrors
+}
+</pre>
+
+## Generating an QR Code with an Order Number
+
+`http://mastercard.savantdegrees.com/api/1.0/test/mastercard/qrCode`
+
+### Get Parameters:
+<ul><li>payload: string, the content to embed in the QR code, should pass in the order number</li>
+<li>size: integer, width in pixels of the QR code image that should be generated. The image will be a square</li></ul>
+
+### Response:
+An JPEG image. 
+
+## Querying whether an Order is Paid
+
+`http://mastercard.savantdegrees.com/api/1.0/order/<brandCode>/paid/<orderNumber>`
+
+### Response:
+<pre>
+{
+	success: true,
+	paid: boolean
+}
+
 # Cama Cafe Extensions
 
 #### Product:
