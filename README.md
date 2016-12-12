@@ -32,8 +32,15 @@
 	* <a href="#posting-an-order-1">Posting an Order</a>
 5. <a href="#masterdemo-extensions">MasterDemo Extensions</a>
 	* <a href="#get-app-translation-dictionary">Get App Translation Dictionary</a>
+	* <a href="#appending-items-payments-and-promotions-to-an-existing-order">Appending Items, Payments, and Promotions to an Existing Order</a>
+	* <a href="#generating-an-qr-code-with-an-order-number">Generating an QR Code with an Order Number</a>
+	* <a href="#querying-whether-an-order-is-paid">Querying whether an Order is Paid</a>
 6. <a href="#cama-cafe-extensions">Cama Cafe Extensions</a>
 	* <a href="#get-app-translation-dictionary-2">Get App Translation Dictionary</a>
+	* <a href="#taiwan-addresses">Taiwan Addresses</a>
+	* <a href="#get-postal-zones">Get Postal Zones</a>
+	* <a href="#get-divisions">Get Divisions</a>
+	* <a href="#get-roads">Get Roads</a>
 
 # Alpha Entities Overview
 
@@ -1170,7 +1177,7 @@ If a key is missing from the response, the app should display `<key>`. For examp
 
 `http://mastercard.savantdegrees.com/api/1.0/test/mastercard/qrCode`
 
-### Get Parameters:
+### GET Parameters:
 <ul><li>payload: string, the content to embed in the QR code, should pass in the order number</li>
 <li>size: integer, width in pixels of the QR code image that should be generated. The image will be a square</li></ul>
 
