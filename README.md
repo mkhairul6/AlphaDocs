@@ -1187,6 +1187,7 @@ An JPEG image.
 	success: true,
 	paid: boolean
 }
+</pre>
 
 # Cama Cafe Extensions
 
