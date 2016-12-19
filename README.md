@@ -43,6 +43,9 @@
 	* <a href="#get-roads">Get Roads</a>
 7. <a href="#the-soup-spoon-extensions">The Soup Spoon Extensions</a>
 	* <a href="#redeeming-points">Redeeming Points</a>
+	* <a href="#resend-souperholic-verification-email">Resend Souperholic Verification Email</a>
+	* <a href="#manually-verify-souperholic-email">Manually Verify Souperholic Email</a>
+	* <a href="#register-a-card">Register a Card</a>
 
 # Alpha Entities Overview
 
@@ -1333,6 +1336,8 @@ redeemDollars = 2
 
 If a customer redeems 300 points, the customer gets $6 off the order. 300 / 100 * 2 = 6
 
+Apps can use this to calculate and show in real-time how many dollars discount the customer will get without having to request to the server whenever the customer is changing the points.
+
 ### Customer:
 <pre>
 {
@@ -1357,7 +1362,56 @@ If a customer redeems 300 points, the customer gets $6 off the order. 300 / 100 
 
 Souperholic is a live Soup Spoon app that customers can use to earn and redeem points. See <http://www.thesoupspoon.com/souperholic-main/> This new app will integrate with Souperholic such that it will handle the points earning and redemption. That way customers can also login using the same account on the Souperholic app to see their points.
 
+Souperholic requires the following fields upon registration:
+<ul>
+<li>title</li>
+<li>firstName</li>
+<li>lastName</li>
+<li>dateOfBirth</li>
+<li>phone: must be an 8 digit number</li>
+<li>email</li>
+</ul>
+
+Failure to enter any of these fields will result an error. Note that emails and phone numbers are unique at Souperholic. Once one is registered, it cannot be registered again. Prepare multiple email accounts and multiple random phone numbers for QA!
+
 ## Redeeming Points
 
-Apps should pass in the points the customer intends to redeem using the `rewardPoints` property. If this value is 0 or missing, Alpha assumes the customer does not intend to redeem any points. In that case, if the order is eligible for points earning, points will be automatically credited to the customer's account. Apps should retrieve customer details again at the cart page, to get the latest points that the customer has before showing the shopping cart so the customer knows how many points is available for redemption.
+Apps should pass in the points the customer intends to redeem using the `rewardPoints` property in the Order JSON in the POST body of Posting an Order API. Passing in a test order works correctly, discounts will be created automatically with the correct amount. If this value is 0 or missing, Alpha considers the customer does not intend to redeem any points. In that case, if the order is eligible for points earning, points will be automatically credited to the customer's account. Apps should retrieve customer details again at the cart page, to get the latest points that the customer has before showing the shopping cart so the customer knows how many points is available for redemption.
+
+The amount of points in the customer balance will be returned in the `pointsBalance` property whenever an Order is posted.
+
+## Resend Souperholic Verification Email
+
+`http://<server>/api/1.0/customer/souperResendVerification`
+
+### POST Parameters:
+<ul><li>authToken: string</li></ul>
+
+This will trigger a resend of the Souperholic verification email to the customer. Note that once a customer registers an account on Alpha, an account is also created at Souperholic which sends a verification email to the customer. This API call merely resends the same email. Also, note that if the user has not verified their Souperholic account, they cannot register a Souperholic card or earn and redeem points. Apps should not ask customers how many points they want to redeem if their account is not verified. See `SouperholicData.verified` property.
+
+## Manually Verify Souperholic Email
+
+`http://<server>/api/1.0/customer/souperVerify`
+
+### POST Parameters:
+<ul><li>accountId: string, as contained in the Souperholic email</li>
+<li>verificationKey: string, as contained in the Souperholic email</li></ul>
+
+Since the Souperholic server is a staging server, the verification email it sends out does not actually contain a link for the customer to verify their account. In that case, call this URL manually with the 2 parameters in the email, to verify the Souperholic account. Check that the account is verified by calling the Get Customer Details API.
+
+## Register a Card 
+
+`http://<server>/api/1.0/customer/souperRegisterCard`
+
+### POST Parameters:
+<ul><li>authToken: string</li>
+<li>cardNumber: string, this is the barcode number or the number entered by the customer to register an existing card into their Souperholic account. If not passed in, a new card will be created</li></ul>
+
+### Response:
+<pre>
+{
+	success: true,
+	souper: SouperholicData object
+}
+</pre>
 
