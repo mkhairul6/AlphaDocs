@@ -1331,10 +1331,12 @@ These objects has the following additional properties:
 
 For example, given the following values:
 
-spendPoints = 100<br/>
-redeemDollars = 2<br/>
+<ul>
+<li>spendPoints = 100</li>
+<li>redeemDollars = 2</li>
+</ul>
 
-If a customer redeems 300 points, the customer gets $6 off the order. 300 / 100 * 2 = 6
+If a customer redeems 300 points, the customer gets $6 off the order. `300 / 100 * 2 = 6`
 
 Apps can use this to calculate and show in real-time how many dollars discount the customer will get without having to request to the server whenever the customer is changing the points.
 
