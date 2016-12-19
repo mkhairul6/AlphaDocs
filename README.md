@@ -41,6 +41,8 @@
 	* <a href="#get-postal-zones">Get Postal Zones</a>
 	* <a href="#get-divisions">Get Divisions</a>
 	* <a href="#get-roads">Get Roads</a>
+7. <a href="#the-soup-spoon-extensions">The Soup Spoon Extensions</a>
+	* <a href="#redeeming-points">Redeeming Points</a>
 
 # Alpha Entities Overview
 
@@ -1311,3 +1313,51 @@ A map of translation key-values. E.g.
 </pre>
 
 If a key is missing from the response, the app should display `<key>`. For example, if the translation for “email” is missing, the app should display `<email>`. This makes it obvious that a translation is missing, so it can be added to the API.
+
+# The Soup Spoon Extensions
+
+These objects has the following additional properties:
+
+#### Brand:
+<pre>
+{
+	spendPoints: decimal number, for every multiple of this value used, the customer gets to redeem "redeemDollars",
+	redeemDollars: decimal number, see "spendPoints"
+}
+</pre>
+
+For example, given the following values:
+
+spendPoints = 100<br/>
+redeemDollars = 2
+
+If a customer redeems 300 points, the customer gets $6 off the order. 300 / 100 * 2 = 6
+
+### Customer:
+<pre>
+{
+	title: string, designation of the customer, "Mr", "Mrs", etc. This is a free-form string,
+	souperholic: SouperholicData object
+}
+</pre>
+
+### SouperholicData:
+<pre>
+{
+	verified: boolean, whether the customer has clicked on the verification link sent by Souperholic, if this is not true, customers should not be allowed to register a card and redeem points,
+	accountId: string, primary key of the customer account in Souperholic,
+	card: string, the barcode number of the customer's Souperholic card, can be null if the customer doesn't have one,
+	cardImage: string, a URL which is an barcode image of the card, apps can simply show this URL, can be null,
+	deactivated: boolean, whether the customer's Souperholic card has been deactivated, i.e. can't earn or redeem points anymore,
+	points: integer, number of points the customer has that can be redeemed,
+	registeredDate: milliseconds since epochTime, time the Souperholic card was registered, can be null if the customer doesn't have one,
+	expiryDate: milliseconds since epochTime, time the Souperholic card will expire, can be null if the customer doesn't have one
+}
+</pre>
+
+Souperholic is a live Soup Spoon app that customers can use to earn and redeem points. See <http://www.thesoupspoon.com/souperholic-main/> This new app will integrate with Souperholic such that it will handle the points earning and redemption. That way customers can also login using the same account on the Souperholic app to see their points.
+
+## Redeeming Points
+
+Apps should pass in the points the customer intends to redeem using the `rewardPoints` property. If this value is 0 or missing, Alpha assumes the customer does not intend to redeem any points. In that case, if the order is eligible for points earning, points will be automatically credited to the customer's account. Apps should retrieve customer details again at the cart page, to get the latest points that the customer has before showing the shopping cart so the customer knows how many points is available for redemption.
+
