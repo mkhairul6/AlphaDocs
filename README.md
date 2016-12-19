@@ -1332,7 +1332,7 @@ These objects has the following additional properties:
 For example, given the following values:
 
 spendPoints = 100<br/>
-redeemDollars = 2
+redeemDollars = 2<br/>
 
 If a customer redeems 300 points, the customer gets $6 off the order. 300 / 100 * 2 = 6
 
