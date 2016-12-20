@@ -665,28 +665,28 @@ The following are descriptions for each status (values in brackets are what is d
 *Don’t pass in the parameter if not available*
 
 ### POST Parameters:
-<ul><li>firstName</li>
-<li>lastName</li>
-<li>email</li>
-<li>password</li>
-<li>gender: “MALE|FEMALE”</li>
-<li>origin: “ANDROID|IOS”</li>
-<li>dateOfBirth: long value, epoch time in milliseconds</li>
-<li>phone</li>
-<li>facebookId</li>
-<li>googlePlusId</li>
-<li>lineId: LINE mid</li>
-<li>accessToken: Required when facebookId, googlePlusId or lineId is passed in</li>
-<li>refreshToken: lineId refresh token</li>
-<li>addressName: name of address, free-form value e.g. “Home”, “Office”</li>
-<li>addressLine1</li>
-<li>addressLine2</li>
-<li>addressCity</li>
-<li>addressCountryCode: 2-character string ISO 3166-2</li>
-<li>addressPostalCode</li>
-<li>deviceToken: device token for push notifications</li>
-<li>deviceType: “ANDROID|IOS”</li>
-<li>nationalityCode: 2-character string ISO 3166-2 country code</li></ul>
+* firstName
+* lastName
+* email
+* password
+* gender: “MALE|FEMALE”
+* origin: “ANDROID|IOS”
+* dateOfBirth: long value, epoch time in milliseconds
+* phone
+* facebookId
+* googlePlusId
+* lineId: LINE mid
+* accessToken: Required when facebookId, googlePlusId or lineId is passed in
+* refreshToken: lineId refresh token
+* addressName: name of address, free-form value e.g. “Home”, “Office”
+* addressLine1
+* addressLine2
+* addressCity
+* addressCountryCode: 2-character string ISO 3166-2
+* addressPostalCode
+* deviceToken: device token for push notifications
+* deviceType: “ANDROID|IOS”
+* nationalityCode: 2-character string ISO 3166-2 country code
 
 ### Response:
 <pre>
