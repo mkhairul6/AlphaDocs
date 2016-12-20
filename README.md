@@ -1315,7 +1315,7 @@ A map of translation key-values. E.g.
 }
 </pre>
 
-If a key is missing from the response, the app should display `<key>`. For example, if the translation for “email” is missing, the app should display `<email>`. This makes it obvious that a translation is missing, so it can be added to the API.
+If a key is missing from the response, the app should display `&lt;key&gt;`. For example, if the translation for “email” is missing, the app should display `&lt;email&gt;`. This makes it obvious that a translation is missing, so it can be added to the API.
 
 # The Soup Spoon Extensions
 
