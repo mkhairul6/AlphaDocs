@@ -582,7 +582,6 @@ When promotions are applied, success will be false if the any of the vouchers or
 <li>placeTimeTo: long, epoch time in millisecond, exclusive</li>
 <li>authToken: if passed in, will only return orders for this customer</li>
 <li>number: string, order number</li></ul>
-
 ### Response:
 <pre>
 {
