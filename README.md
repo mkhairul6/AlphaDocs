@@ -571,17 +571,6 @@ When promotions are applied, success will be false if the any of the vouchers or
 
 `http://<server>/api/1.0/orders/<brandCode>`
 
-### GET Parameters:
-<ul><li>store: ID of Store, if missing Orders from all Stores are returned</li>
-<li>pageSize: maximum number of records to return per page, if missing = 20</li>
-<li>pageNumber: 0-based index of page to return, if missing = 0</li>
-<li>sortOrder: “ASC|DESC”, if missing = “ASC”</li>
-<li>sortProperty: “placeTime”, for now, if missing = “placeTime”</li>
-<li>status: “PLACED|COMPLETED|CANCELLED”, if missing, all orders will be returned</li>
-<li>placeTimeFrom: long, epoch time in millisecond, inclusive</li>
-<li>placeTimeTo: long, epoch time in millisecond, exclusive</li>
-<li>authToken: if passed in, will only return orders for this customer</li>
-<li>number: string, order number</li></ul>
 ### Response:
 <pre>
 {
