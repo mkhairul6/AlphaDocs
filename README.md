@@ -182,7 +182,7 @@ Sample: <http://alpha.savantdegrees.com/api/1.0/stores/ALT?authorization=jO0fHEB
 If `storeId` is passed in, only the available menu for that particular store is returned.
 
 ### GET Parameters:
-<ul><li>showAll: boolean, default is false, if true returns all products regardless whether they are available or not</li></ul>
+* showAll: boolean, default is false, if true returns all products regardless whether they are available or not
 
 ### Response:
 <pre>
@@ -710,8 +710,8 @@ The following are descriptions for each status (values in brackets are what is d
 *Don’t pass in the parameter if not updating.*
 
 ### Additional POST Parameters:
-<ul><li>authToken: authentication token of the user</li>
-<li>addressId: ID of address to update, if not passed in when address data is passed in the system will create a new address for the customer</li></ul>
+* authToken: authentication token of the user
+* addressId: ID of address to update, if not passed in when address data is passed in the system will create a new address for the customer
 
 The rest are same as register.
 
@@ -720,8 +720,8 @@ The rest are same as register.
 `http://<server>/api/1.0/customer/deleteAddress/<brandCode>`
 
 ### POST Parameters:
-<ul><li>authToken: string</li>
-<li>id: ID of Address to delete</li></ul>
+* authToken: string
+* id: ID of Address to delete
 
 ### Response:
 <pre>
@@ -735,7 +735,7 @@ The rest are same as register.
 `http://<server>/api/1.0/customer/details/<brandCode>`
 
 ### GET Parameters:
-<ul><li>authToken: string</li></ul>
+* authToken: string
 
 ### Response:
 <pre>
@@ -795,15 +795,15 @@ The rest are same as register.
 `http://<server>/api/1.0/customer/login/<brandCode>`
 
 ### POST Parameters:
-<ul><li>email</li>
-<li>password</li>
-<li>facebookId</li>
-<li>googlePlusId</li>
-<li>lineId: LINE mid</li>
-<li>accessToken: Facebook or Google Plus or LINE access token</li>
-<li>refreshToken: LINE refresh token</li>
-<li>deviceToken: device token for push notifications</li>
-<li>deviceType: “ANDROID|IOS”</li></ul>
+* email
+* password
+* facebookId
+* googlePlusId
+* lineId: LINE mid</li>
+* accessToken: Facebook or Google Plus or LINE access token
+* refreshToken: LINE refresh token
+* deviceToken: device token for push notifications
+* deviceType: “ANDROID|IOS”
 
 (email and password) OR (facebookId and accessToken) OR (googlePlusId and accessToken) OR (lineId and accessToken) is required
 
@@ -820,9 +820,9 @@ The rest are same as register.
 `http://<server>/api/1.0/customer/logout/<brandCode>`
 
 ### POST Parameters:
-<ul><li>accessToken: Facebook or Google Plus access token</li>
-<li>authToken: string</li>
-<li>deviceToken: device push token so as to disable push notifications to this device</li></ul>
+* accessToken: Facebook or Google Plus access token
+* authToken: string
+* deviceToken: device push token so as to disable push notifications to this device
 
 ### Response:
 <pre>
@@ -836,7 +836,7 @@ The rest are same as register.
 `http://<server>/api/1.0/customer/forgotPassword/<brandCode>`
 
 ### POST Parameters:
-<ul><li>email: customer email address</li></ul>
+* email: customer email address
 
 ### Response:
 <pre>
@@ -853,9 +853,9 @@ The rest are same as register.
 `http://<server>/api/1.0/customer/changePassword/<brandCode>`
 
 ### POST Parameters:
-<ul><li>email: customer email address</li>
-<li>pin: pin number that was sent to their email account</li>
-<li>password: new password</li></ul>
+* email: customer email address
+* pin: pin number that was sent to their email account
+* password: new password
 
 ### Response:
 <pre>
@@ -874,13 +874,12 @@ The rest are same as register.
 `http://<server>/api/1.0/eta/<brandCode>`
 
 ### GET Parameters:
-<ul>
-<li>store: ID of store</li>
-<li>orderType: “DELIVERY|TAKE_AWAY|DINE_IN”</li>
-<li>address: string, pass in either this or (postalCode and countryCode)</li>
-<li>postalCode: pass in (this and countryCode) or address</li>
-<li>countryCode: see postalCode</li>
-<li>subTotal: decimal number, defaults to 0 if not passed in</li></ul>
+* store: ID of store</li>
+* orderType: “DELIVERY|TAKE_AWAY|DINE_IN”
+* address: string, pass in either this or (postalCode and countryCode)
+* postalCode: pass in (this and countryCode) or address
+* countryCode: see postalCode
+* subTotal: decimal number, defaults to 0 if not passed in
 
 
 ## Get GPS Coordinates from Address
@@ -888,7 +887,7 @@ The rest are same as register.
 `http://<server>/api/1.0/location/coordinates`
 
 ### GET Parameters:
-<ul><li>line: string, any free-form string containing some kind of address</li></ul>
+* line: string, any free-form string containing some kind of address
 
 ### Response:
 <pre>
@@ -904,8 +903,8 @@ The rest are same as register.
 `http://<server>/api/1.0/location/address`
 
 ### GET Parameters:
-<ul><li>lat: double, latitude</li>
-<li>lng: double, longitude</li></ul>
+* lat: double, latitude
+* lng: double, longitude
 
 ### Response:
 <pre>
@@ -920,7 +919,7 @@ The rest are same as register.
 `http://<server>/api/1.0/location/closestStore/<brandCode>`
 
 ### GET Parameters:
-<ul><li>line: address string</li></ul>
+* line: address string
 
 ### Response:
 <pre>
@@ -935,8 +934,8 @@ The rest are same as register.
 `http://<server>/api/1.0/customer/favourites`
 
 ### GET Parameters:
-<ul><li>authToken: string</li>
-<li>productData: boolean, if true returns product details in 'favourites' property of the response</li></ul>
+* authToken: string
+* productData: boolean, if true returns product details in 'favourites' property of the response
 
 ### Response:
 <pre>
@@ -960,8 +959,8 @@ The rest are same as register.
 `http://<server>/api/1.0/customer/favourite`
 
 ### POST Parameters:
-<ul><li>authToken: string</li>
-<li>product: ID of product</li></ul>
+* authToken: string
+* product: ID of product
 
 ### Response:
 <pre>
@@ -975,8 +974,8 @@ The rest are same as register.
 `http://<server>/api/1.0/customer/unfavourite`
 
 ### POST Parameters:
-<ul><li>authToken: string</li>
-<li>product: ID of product</li></ul>
+* authToken: string
+* product: ID of product
 
 ### Response:
 <pre>
@@ -1061,9 +1060,9 @@ The following are the values of this enum:
 `http://<server>/api/1.0/customers/<brandCode>`
 
 ### GET Parameters:
-<ul><li>pageSize: maximum number of records to return per page, if missing = 20</li>
-<li>pageNumber: 0-based index of page to return, if missing = 0</li>
-<li>memberId: string, optional, if passed in, only the member with that memberId is returned</li></ul>
+* pageSize: maximum number of records to return per page, if missing = 20
+* pageNumber: 0-based index of page to return, if missing = 0
+* memberId: string, optional, if passed in, only the member with that memberId is returned
 
 ### Response:
 <pre>
@@ -1134,7 +1133,7 @@ The Brand object has the following additional properties:
 `http://mastercard.savantdegrees.com/api/1.0/translate/masterdemo/dictionary`
 
 ### GET Parameters:
-<ul><li>language: "en|zh|id|jp", default is "en"</li></ul>
+* language: "en|zh|id|jp", default is "en"
 
 ### Response:
 
@@ -1184,8 +1183,8 @@ If a key is missing from the response, the app should display `&lt;key&gt;`. For
 `http://mastercard.savantdegrees.com/api/1.0/test/mastercard/qrCode`
 
 ### GET Parameters:
-<ul><li>payload: string, the content to embed in the QR code, should pass in the order number</li>
-<li>size: integer, width in pixels of the QR code image that should be generated. The image will be a square</li></ul>
+* payload: string, the content to embed in the QR code, should pass in the order number
+* size: integer, width in pixels of the QR code image that should be generated. The image will be a square
 
 ### Response:
 An JPEG image. 
@@ -1255,7 +1254,7 @@ Apps should submit fields for delivery addresses like these:
 `http://camacafe.savantdegrees.com/api/1.0/location/divisions`
 
 ### GET Parameters:
-<ul><li>id: integer, ID of the Zone to get the Divisions within that Zone</li></ul>
+* id: integer, ID of the Zone to get the Divisions within that Zone
 
 ### Response:
 <pre>
@@ -1278,7 +1277,7 @@ Apps should submit fields for delivery addresses like these:
 `http://camacafe.savantdegrees.com/api/1.0/location/roads`
 
 ### GET Parameters:
-<ul><li>id: integer, ID of the Division to get the Roads within that Division</li></ul>
+* id: integer, ID of the Division to get the Roads within that Division
 
 ### Response:
 <pre>
@@ -1332,10 +1331,8 @@ These objects has the following additional properties:
 
 For example, given the following values:
 
-<ul>
-<li>spendPoints = 100</li>
-<li>redeemDollars = 2</li>
-</ul>
+* spendPoints = 100
+* redeemDollars = 2
 
 If a customer redeems 300 points, the customer gets $6 off the order. `300 / 100 * 2 = 6`
 
@@ -1366,14 +1363,12 @@ Apps can use this to calculate and show in real-time how many dollars discount t
 Souperholic is a live Soup Spoon app that customers can use to earn and redeem points. See <http://www.thesoupspoon.com/souperholic-main/> This new app will integrate with Souperholic such that it will handle the points earning and redemption. That way customers can also login using the same account on the Souperholic app to see their points.
 
 Souperholic requires the following fields upon registration:
-<ul>
-<li>title</li>
-<li>firstName</li>
-<li>lastName</li>
-<li>dateOfBirth</li>
-<li>phone: must be an 8 digit number</li>
-<li>email</li>
-</ul>
+* title
+* firstName
+* lastName
+* dateOfBirth
+* phone: must be an 8 digit number
+* email
 
 Failure to enter any of these fields will result an error. Note that emails and phone numbers are unique at Souperholic. Once one is registered, it cannot be registered again. Prepare multiple email accounts and multiple random phone numbers for QA!
 
@@ -1388,7 +1383,7 @@ The amount of points in the customer balance will be returned in the `pointsBala
 `http://<server>/api/1.0/customer/souperResendVerification`
 
 ### POST Parameters:
-<ul><li>authToken: string</li></ul>
+* authToken: string
 
 This will trigger a resend of the Souperholic verification email to the customer. Note that once a customer registers an account on Alpha, an account is also created at Souperholic which sends a verification email to the customer. This API call merely resends the same email. Also, note that if the user has not verified their Souperholic account, they cannot register a Souperholic card or earn and redeem points. Apps should not ask customers how many points they want to redeem if their account is not verified. See `SouperholicData.verified` property.
 
@@ -1397,8 +1392,8 @@ This will trigger a resend of the Souperholic verification email to the customer
 `http://<server>/api/1.0/customer/souperVerify`
 
 ### POST Parameters:
-<ul><li>accountId: string, as contained in the Souperholic email</li>
-<li>verificationKey: string, as contained in the Souperholic email</li></ul>
+* accountId: string, as contained in the Souperholic email
+* verificationKey: string, as contained in the Souperholic email
 
 Since the Souperholic server is a staging server, the verification email it sends out does not actually contain a link for the customer to verify their account. In that case, call this URL manually with the 2 parameters in the email, to verify the Souperholic account. Check that the account is verified by calling the Get Customer Details API.
 
@@ -1407,8 +1402,8 @@ Since the Souperholic server is a staging server, the verification email it send
 `http://<server>/api/1.0/customer/souperRegisterCard`
 
 ### POST Parameters:
-<ul><li>authToken: string</li>
-<li>cardNumber: string, this is the barcode number or the number entered by the customer to register an existing card into their Souperholic account. If not passed in, a new card will be created</li></ul>
+* authToken: string
+* cardNumber: string, this is the barcode number or the number entered by the customer to register an existing card into their Souperholic account. If not passed in, a new card will be created
 
 ### Response:
 <pre>
