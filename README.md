@@ -583,7 +583,7 @@ When promotions are applied, success will be false if the any of the vouchers or
 <li>authToken: if passed in, will only return orders for this customer</li>
 <li>number: string, order number</li></ul>
 
-#### Response:
+### Response:
 <pre>
 {
 	success: true,
@@ -1151,7 +1151,7 @@ A map of translation key-values. E.g.
 }
 </pre>
 
-If a key is missing from the response, the app should display `<key>`. For example, if the translation for “email” is missing, the app should display `<email>`. This makes it obvious that a translation is missing, so it can be added to the API.
+If a key is missing from the response, the app should display `&lt;key&gt;`. For example, if the translation for “email” is missing, the app should display `&lt;email&gt;`. This makes it obvious that a translation is missing, so it can be added to the API.
 
 ## Appending Items, Payments, and Promotions to an Existing Order
 
