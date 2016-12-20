@@ -604,11 +604,11 @@ When promotions are applied, success will be false if the any of the vouchers or
 
 When an order is submitted, its status is PLACED. The state transitions are as follows:
 
-* PLACED -> QUEUED | PREPARATION | CANCELLED
-* QUEUED -> PREPARATION | CANCELLED
-* PREPARATION -> READY | CANCELLED
-* READY -> COMPLETED |  CANCELLED
-* COMPLETED -> CANCELLED
+* PLACED -&gt; QUEUED | PREPARATION | CANCELLED
+* QUEUED -&gt; PREPARATION | CANCELLED
+* PREPARATION -&gt; READY | CANCELLED
+* READY -&gt; COMPLETED |  CANCELLED
+* COMPLETED -&gt; CANCELLED
 
 
 The following are descriptions for each status (values in brackets are what is displayed to back-end users):
