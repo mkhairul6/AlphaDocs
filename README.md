@@ -622,7 +622,7 @@ The following are descriptions for each status (values in brackets are what is d
 
 ## Accepting an Order
 
-`http://<server>/api/1.0/order/<brandCode>/accept/<order number>`
+`http://&lt;server&gt;/api/1.0/order/&lt;brandCode&gt;/accept/&lt;order number&gt;`
 
 ### Response:
 <pre>
