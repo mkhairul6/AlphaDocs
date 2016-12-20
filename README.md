@@ -585,7 +585,7 @@ When promotions are applied, success will be false if the any of the vouchers or
 
 Some text here. Ignore.
 
-### Response:
+Response:
 <pre>
 {
 	success: true,
