@@ -583,6 +583,8 @@ When promotions are applied, success will be false if the any of the vouchers or
 <li>authToken: if passed in, will only return orders for this customer</li>
 <li>number: string, order number</li></ul>
 
+<pre></pre>
+
 ### Response:
 <pre>
 {
