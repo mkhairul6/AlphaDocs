@@ -27,6 +27,7 @@
 	* <a href="#add-a-favourite-product-for-customer">Add a Favourite Product for Customer</a>
 	* <a href="#remove-a-favourite-product-for-customer">Remove a Favourite Product for Customer</a>
 	* <a href="#getting-all-promotions">Getting all Promotions</a>
+	* <a href="#testing-push-notifications">Testing Push Notifications</a>
 4. <a href="#collision-8-extensions">Collision 8 Extensions</a>
 	* <a href="#get-all-customers">Get All Customers</a>
 	* <a href="#posting-an-order-1">Posting an Order</a>
@@ -1052,6 +1053,28 @@ The following are the values of this enum:
 * **DOLLAR\_DISCOUNT\_ON\_CART**: Dollar discount on a whole order
 * **PERCENTAGE\_DISCOUNT\_ON\_ITEM**: Percentage discount on a product that is in the criteria list of products
 * **PERCENTAGE\_DISCOUNT\_ON\_CART**: Percentage discount on a whole order
+
+## Testing Push Notifications
+
+`http://<server>/api/1.0/test/<brandCode>/push`
+
+### POST Parameters:
+* message: string
+* deviceType: "ANDROID|IOS"
+* title: string
+* deviceId: string
+
+Configuration to enable this to work is under Brand > Edit under the Brands menu.
+
+The following fields have to be entered for GCM push notifications to work: 
+
+* Android Push Key
+
+The following fields have to be entered for APN push notifications to work:
+ 
+* Upload iOS Push Key File (.p12)
+* iOS Push Key Password
+* iOS Push Server Destination
 
 # Collision 8 Extensions
 
