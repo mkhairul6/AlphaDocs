@@ -409,7 +409,7 @@ See <a href="#getting-all-promotions">here</a> for more details on applying prom
 	cardId: string, id of selected card, 
 	addressId: string, id of selected address,
 	providerRef: string, from the pre checkout API response,
-	cardType: string, card type information from the encoded wallet data,
+	cardType: string, card type information from the encoded wallet data (BrandName element),
 	deviceToken: string, device token used for push notifications
 }
 </pre>
