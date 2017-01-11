@@ -47,6 +47,7 @@
 	* <a href="#resend-souperholic-verification-email">Resend Souperholic Verification Email</a>
 	* <a href="#manually-verify-souperholic-email">Manually Verify Souperholic Email</a>
 	* <a href="#register-a-card">Register a Card</a>
+	* <a href="#pay-with-credit-card">Pay with credit card</a>
 
 # Alpha Entities Overview
 
@@ -355,7 +356,8 @@ Note that at store 19, only takeaway is available for that product.
 	vouchers: Array of Voucher IDs to be applied to this order,
 	promoCodes: Array of promo codes to be applied to this order,
 	rewardPoints: integer,
-	pax: integer, number of people eating in (only applicable for DINE_IN)
+	pax: integer, number of people eating in (only applicable for DINE_IN),
+	paymentIds: Array of Payment Ids used for making payments (for payments using web view inside mobile applications)
 }
 </pre>
 
@@ -1436,3 +1438,21 @@ Since the Souperholic server is a staging server, the verification email it send
 }
 </pre>
 
+## Pay with credit card
+
+`http://<server>/ipg/mpgs/mobilePayment/<uniquePaymentId>?brand=<brandCode>&amount=<paymentAmount>`
+
+### URL Parameters:
+
+* uniquePaymentId: string, generated on the app as a random alpha-numeric string for each payment attempt,
+* brandCode: string, brand code,
+* paymentAmount: decimal number 
+
+Open the URL (Hosted Checkout payment method) in a web view within the app before posting the order. This web page allows the user to enter credit card information securely inside the web page and complete payment. Observe the web view URL for the following changes:
+
+* If the url contains `mobileCancel` - payment was cancelled by user. Navigate away from web view and inform the user that payment has been cancelled.
+* If the url contains `mobileFail` - payment failed. Navigate away from the web view and inform the user that payment has failed.
+* If the url contains `mobileProcessing` - payment is being processed by our sever waiting for a notification. Keep reloading the same URL (maybe once every 3-5 seconds) until the web view gets redirected to one containing the key word `mobileSuccess`. Allow for a timeout after 30 seconds.
+* If the url contains `mobileSuccess` - payment was successful. Navigate away from the web view and post the order with an array of paymentIds containing the unique payment id.
+
+Test credit cards for this payment method can be found [here](https://ap-gateway.mastercard.com/api/documentation/integrationGuidelines/supportedFeatures/testAndGoLive.html?locale=en_US)
