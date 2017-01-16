@@ -47,18 +47,22 @@
 	* <a href="#resend-souperholic-verification-email">Resend Souperholic Verification Email</a>
 	* <a href="#manually-verify-souperholic-email">Manually Verify Souperholic Email</a>
 	* <a href="#register-a-card">Register a Card</a>
+8. <a href="#masterpass-with-wirecard">MasterPass with WireCard</a>
+	* <a href="#pairing-request">Pairing request</a>
+	* <a href="#precheckout-request">Precheckout request</a>
+	* <a href="#create-pin">Create PIN</a>
 
 # Alpha Entities Overview
 
-* **Brand** - Alpha supports multiple Brands. Every other entity is tied to a Brand. 
-* **Store** - A place that you make an order to. 
+* **Brand** - Alpha supports multiple Brands. Every other entity is tied to a Brand.
+* **Store** - A place that you make an order to.
 * **Product** - An item that can be sold on its own
-* **Category** - A Product can belong to multiple Categories. A Category can have multiple child Categories. 
+* **Category** - A Product can belong to multiple Categories. A Category can have multiple child Categories.
 * **Tag** - A Product can have zero or one or more Tags. A Tag is just a piece of information with an image.
 * **Variant** - A Variant is some kind of variation of a Product that the customer must choose one. It has a price. Not all Products have Variants.
 * **Modifier Group** - A Product can have multiple Modifier Groups. Each group has a set of Modifiers. This allows a wide range of choices to be presented to the customer
-* **Modifier** - Something that modifies the final Product that the customer receives. Can have extra cost. 
-* **Availability** - A day + time range for when something is available 
+* **Modifier** - Something that modifies the final Product that the customer receives. Can have extra cost.
+* **Availability** - A day + time range for when something is available
 
 ## Entities Index
 
@@ -210,7 +214,7 @@ If `storeId` is passed in, only the available menu for that particular store is 
 </pre>
 
 #### Tag:
-<pre> 
+<pre>
 {
 	id: ID
 	imageId: string,
@@ -246,7 +250,7 @@ If `storeId` is passed in, only the available menu for that particular store is 
 	sortIndex: integer, can be used for sorting Products in ascending order,
 	price: decimal number,
 	dineIn: boolean, if Store ID is passed in, whether this Product is available for dine-in right now. If Store ID is not passed in, whether ANY Stores have this available for dine-in,
-	delivery: boolean, if Store ID is passed in, whether this Product is available for delivery right now. If Store ID is not passed in, whether ANY Stores have this available for delivery, 
+	delivery: boolean, if Store ID is passed in, whether this Product is available for delivery right now. If Store ID is not passed in, whether ANY Stores have this available for delivery,
 	takeAway: boolean, if Store ID is passed in, whether this Product is available for take away right now. If Store ID is not passed in, whether ANY Stores has this available for take-away,
 	allDineIn: boolean, only appears when Store ID is not passed in, whether ALL Stores have this Product avaiable for dine-in right now,
 	allTakeAway: boolean, only appears when Store ID is not passed in, whether ALL Stores have this Product avaiable for take-away right now,
@@ -355,7 +359,8 @@ Note that at store 19, only takeaway is available for that product.
 	vouchers: Array of Voucher IDs to be applied to this order,
 	promoCodes: Array of promo codes to be applied to this order,
 	rewardPoints: integer,
-	pax: integer, number of people eating in (only applicable for DINE_IN)
+	pax: integer, number of people eating in (only applicable for DINE_IN),
+	masterpassPayment: object, optional to pay using masterpass
 }
 </pre>
 
@@ -364,7 +369,7 @@ If type == “TEST” the server will return a response as if this order is succ
 **Apps should not pass in any taxes and/or discounts from promotions. Those will automatically calculated and applied by Alpha when the order is posted.**
 
 See <a href="#getting-all-promotions">here</a> for more details on applying promotions.
- 
+
 #### Guest:
 <pre>
 {
@@ -393,7 +398,7 @@ See <a href="#getting-all-promotions">here</a> for more details on applying prom
 
 #### ModifierItem:
 <pre>
-{	
+{
 	id: ID, ignored when POSTed to endpoint
 	modifierName: string, ignored when POSTed to endpoint
 	modifierId: ID of Modifier this is referring to
@@ -422,6 +427,19 @@ See <a href="#getting-all-promotions">here</a> for more details on applying prom
 	city: string
 	countryCode: 2 character string, ISO 3166-2 country code
 	postalCode: string
+}
+</pre>
+
+#### MasterpassPayment
+<pre>
+{
+	pin: string, 6 digit pin for verification,
+	transactionId: string, transaction Id from the pre checkout API response,
+	cardId: string, id of selected card,
+	addressId: string, id of selected address,
+	providerRef: string, from the pre checkout API response,
+	cardType: string, card type information from the encoded wallet data (BrandName element),
+	deviceToken: string, device token used for push notifications
 }
 </pre>
 
@@ -510,7 +528,7 @@ When promotions are applied, success will be false if the any of the vouchers or
 <pre>
 {
 	"type": "TEST",
-	"items": [ 
+	"items": [
 		{
 			"product": 31,
 			"quantity": 1,
@@ -523,7 +541,7 @@ When promotions are applied, success will be false if the any of the vouchers or
 					"modifierId": 606,
 					"quantity": 3
 				}
-			]	
+			]
 		},
 		{
 			"product": 4,
@@ -713,6 +731,8 @@ The following are descriptions for each status (values in brackets are what is d
 ### Additional POST Parameters:
 * authToken: authentication token of the user
 * addressId: ID of address to update, if not passed in when address data is passed in the system will create a new address for the customer
+* currentPin: string, current 6 digit PIN, required when updating 6 digit PIN
+* pin: string, new 6 digit PIN, required when updating 6 digit PIN
 
 The rest are same as register.
 
@@ -756,7 +776,7 @@ The rest are same as register.
 	phone
 	googlePlusId
 	facebookId
-	gender: “MALE|FEMALE” or null 
+	gender: “MALE|FEMALE” or null
 	dateOfBirth: milliseconds since epoch time, or null
 	addresses: List of Addresses
 	rewards: Rewards object
@@ -774,7 +794,7 @@ The rest are same as register.
 	used: integer, number of times this voucher has been used, only applicable for vouchers that can be used multiple times per customer
 }
 </pre>
-	
+
 
 #### Rewards:
 <pre>
@@ -1017,7 +1037,7 @@ Note that payments will be not validated by Alpha. Users usually pay first befor
 	periodFrom: millseconds since epochTime, last day before this promotion ends, only applicable when periodType == "LIMITED_PERIOD",
 	fulfillmentType: "ANY_TIME|CUSTOM", ANY_TIME means this can be redeemed anytime during the promotion period, CUSTOM means can only be redeemed during the fulfillment times,
 	fulfillmentTimes: Array of Availabilities, can only be redeemed during these hours, only applicable when fulfillmentType == "CUSTOM",
-	publishType: "VOUCHERS|PROMO_CODE", 
+	publishType: "VOUCHERS|PROMO_CODE",
 	exclusive: boolean, if true this promotion can only be the only promotion used in an order,
 	code: string, the promo code, only appicable when publsihType == "PROMO_CODE",
 	freeType: "PRODUCT|MODIFIER", if PRODUCT the free item will be a specific product, if MODIFIER, it will be a specific modifier, only applicable when benefitType == "FREE_ITEM",
@@ -1066,12 +1086,12 @@ The following are the values of this enum:
 
 Configuration to enable this to work is under Brand > Edit under the Brands menu.
 
-The following fields have to be entered for GCM push notifications to work: 
+The following fields have to be entered for GCM push notifications to work:
 
 * Android Push Key
 
 The following fields have to be entered for APN push notifications to work:
- 
+
 * Upload iOS Push Key File (.p12)
 * iOS Push Key Password
 * iOS Push Server Destination
@@ -1101,12 +1121,12 @@ The following fields have to be entered for APN push notifications to work:
 	memberId: string,
 	pin: string, not used until phase 2, probably as NFC id
 	credits: decimal, credit balance
-} 
+}
 </pre>
 
 ## Posting an Order
 
-* Same end-point. However, don’t pass in any payments.  The system will create a payment of type “CREDITS” and deduct the order total from the member’s credit balance. 
+* Same end-point. However, don’t pass in any payments.  The system will create a payment of type “CREDITS” and deduct the order total from the member’s credit balance.
 * “type” property should be “TAKE_AWAY”.
 * “memberId” is required.
 
@@ -1114,7 +1134,7 @@ The following fields have to be entered for APN push notifications to work:
 <pre>
 {
     "type": "TAKE_AWAY",
-    "items": [ 
+    "items": [
         {
             "product": 1,
             "quantity": 2
@@ -1187,7 +1207,8 @@ If a key is missing from the response, the app should display `&lt;key&gt;`. For
 	payments: Array of Payments,
 	authToken: string, authentication token of current customer, if this is passed in, it will replace the current customer to this one,
 	voucers: Array of Voucher IDs to be applied to this order,
-	promoCodes: Array of promo codes to be applied to this order
+	promoCodes: Array of promo codes to be applied to this order,
+	masterpassPayment: object, optional to pay using masterpass
 }
 </pre>
 
@@ -1210,7 +1231,7 @@ If a key is missing from the response, the app should display `&lt;key&gt;`. For
 * size: integer, width in pixels of the QR code image that should be generated. The image will be a square
 
 ### Response:
-An JPEG image. 
+An JPEG image.
 
 ## Querying whether an Order is Paid
 
@@ -1420,7 +1441,7 @@ This will trigger a resend of the Souperholic verification email to the customer
 
 Since the Souperholic server is a staging server, the verification email it sends out does not actually contain a link for the customer to verify their account. In that case, call this URL manually with the 2 parameters in the email, to verify the Souperholic account. Check that the account is verified by calling the Get Customer Details API.
 
-## Register a Card 
+## Register a Card
 
 `http://<server>/api/1.0/customer/souperRegisterCard`
 
@@ -1436,3 +1457,64 @@ Since the Souperholic server is a staging server, the verification email it send
 }
 </pre>
 
+# MasterPass with WireCard
+
+## Pairing request
+
+`http://<server>/api/1.0/wirecard/pairingRequest/<brandCode>`
+
+### POST Parameters:
+<ul><li>authToken: string</li>
+<li>deviceToken: device token for push notifications</li></ul>
+
+### Response:
+
+The url `http://<server>/masterpass` should be opened inside a WebView within the app with the injected JavaScript (Eg: see [here](https://facebook.github.io/react-native/docs/webview.html#injectedjavascript)) from the response. After the user pairs with MasterPass on the WebView, if the URL contains `pairingCancel` or `pairingFail`, then the pairing operation has not been completed and the app must navigate the user away from the WebView. If the URL contains `pairingSuccess`, then the pairing has been completed successfully.
+
+<pre>
+{
+	success: true,
+	injectedJavaScript: string, to be injected into the WebView on the app,
+}
+</pre>
+
+## Precheckout request
+
+`http://<server>/api/1.0/wirecard/precheckoutRequest/<brandCode>`
+
+### POST Parameters:
+<ul><li>authToken: string</li>
+<li>amount: decimal number</li>
+<li>deviceToken: device token for push notifications</li></ul>
+
+### Response:
+
+The response provides a base64 encoded wallet data (sample [here]("http://docs.elastic-payments.com/?s=wirecardapac#alternative-payments-masterpass")) which can be used to display cards and shipping address options to the customer in the app. The selected information can be used in the place order request to pay using MasterPass. If the precheckout request fails, redirect the user to pair with their wallet again. The precheckout response cannot be used again (after using it in a transaction) or stored within the app - it should be requested each time before displaying the card details to customer.
+
+<pre>
+{
+	success: true,
+	transactionId: string,
+	requestId: string,
+	injectedJavaScript: string, to be injected into	the webview on the app,
+	providerRef: string, use while placing order,
+	walletData: string, decode using base64,
+}
+</pre>
+
+## Create PIN
+
+`http://<server>/api/1.0/customer/createPin/<brandCode>`
+
+### POST parameters:
+
+<ul><li>authToken: string</li>
+<li>pin: string, 6 digit PIN used to authenticate masterpass transactions</li></ul>
+
+### Response
+
+<pre>
+{
+	success: true
+}
+</pre>
