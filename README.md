@@ -435,7 +435,7 @@ See <a href="#getting-all-promotions">here</a> for more details on applying prom
 #### MasterpassPayment
 <pre>
 {
-	pin: string, 6 digit pin for verification,
+	pin: string, optional 6 digit pin for verification,
 	transactionId: string, transaction Id from the pre checkout API response,
 	cardId: string, id of selected card,
 	addressId: string, id of selected address,
