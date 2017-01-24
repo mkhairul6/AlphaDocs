@@ -48,6 +48,7 @@
 	* <a href="#manually-verify-souperholic-email">Manually Verify Souperholic Email</a>
 	* <a href="#register-a-card">Register a Card</a>
 	* <a href="#pay-with-credit-card">Pay with credit card</a>
+	* <a href="#reading-all-orders-including-offline-orders">Reading All Orders Including Offline Orders</a>
 8. <a href="#masterpass-with-wirecard">MasterPass with WireCard</a>
 	* <a href="#pairing-request">Pairing request</a>
 	* <a href="#precheckout-request">Precheckout request</a>
@@ -1477,6 +1478,14 @@ Open the URL (Hosted Checkout payment method) in a web view within the app befor
 * If the url contains `mobileResumeSuccess` - payment was successful. Navigate away from the web view and post the order with an array of paymentIds containing the unique payment id.
 
 Test credit cards for this payment method can be found [here](https://ap-gateway.mastercard.com/api/documentation/integrationGuidelines/supportedFeatures/testAndGoLive.html?locale=en_US)
+
+## Reading All Orders Including Offline Orders
+
+Pass in `all=true` parameter to <a href="#reading-all-orders">Reading all Orders</a> API call to retrive all orders (Online App Orders + Offline Orders)
+
+### URL Parameters:
+
+* all: boolean
 
 # MasterPass with WireCard
 
