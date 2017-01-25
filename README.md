@@ -1474,7 +1474,7 @@ Open the URL (Hosted Checkout payment method) in a web view within the app befor
 
 * If the url contains `mobileResumeCancel` - payment was cancelled by user. Navigate away from web view and inform the user that payment has been cancelled.
 * If the url contains `mobileResumeFail` - payment failed. Navigate away from the web view and inform the user that payment has failed.
-* If the url contains `mobileProcessing` - payment is being processed by our sever waiting for a notification. Keep reloading the same URL (maybe once every 3-5 seconds) until the web view gets redirected to one containing the key word `mobileResumeSuccess`. Allow for a timeout after 40 seconds.
+* If the url contains `mobileProcessing` - payment is being processed by our sever waiting for a notification. The page will automatically reload every 4 seconds to check if payment completed. Allow for a timeout after 40 seconds if the url does not change to `mobileResumeSuccess` or `mobileResumeFail`.
 * If the url contains `mobileResumeSuccess` - payment was successful. Navigate away from the web view and post the order with an array of paymentIds containing the unique payment id.
 
 Test credit cards for this payment method can be found [here](https://ap-gateway.mastercard.com/api/documentation/integrationGuidelines/supportedFeatures/testAndGoLive.html?locale=en_US)
