@@ -1466,7 +1466,7 @@ Since the Souperholic server is a staging server, the verification email it send
 
 ### URL Parameters:
 
-* uniquePaymentId: string, generated on the app as a random alpha-numeric string for each payment attempt,
+* uniquePaymentId: string (maximum length = 40), generated on the app as a random alpha-numeric string for each payment attempt,
 * brandCode: string, brand code,
 * paymentAmount: decimal number
 
