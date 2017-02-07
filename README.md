@@ -145,8 +145,9 @@ It will be at something like `/api/<version>/<service>/<brandCode>`
 	takeAwayHoursString: string, a nicely formatted human readable text from the 'takeAwayHours' property,
 	deliveryHoursString: string, a nicely formatted human readable text from the 'deliveryHours' property,
 	imageId: string,
-	deliveryMaxOrderValue: decimal number or null, apps should not allow a delivery order larger than this value
-	deliveryMinOrderValue: decimal number or null, apps should not allow a delivery order smaller than this value
+	deliveryMaxOrderValue: decimal number or null, apps should not allow a delivery order larger than this value,
+	deliveryMinOrderValue: decimal number or null, apps should not allow a delivery order smaller than this value,
+	sortIndex: integer, can be used for sorting Stores in ascending order,
 }
 </pre>
 
@@ -176,7 +177,8 @@ It will be at something like `/api/<version>/<service>/<brandCode>`
 <pre>
 {
 	id: ID,
-	number: string, human readable number
+	number: string, human readable number,
+	sortIndex: integer, can be used for sorting Tables in ascending order,
 }
 </pre>
 
