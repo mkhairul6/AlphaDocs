@@ -523,7 +523,9 @@ When promotions are applied, success will be false if the any of the vouchers or
 	id: ID, ignored when POSTed to endpoint,
 	percentage: same idea from ExtraCharge’s percentage,
 	amount: same,
-	reason: string, why this discount is given
+	reason: string, why this discount is given,
+	promotion: ID of the promotion used for creating this discount, ignored when POSTed to endpoint,
+	voucher: ID of the voucher used for creating this discount, ignored when POSTed to endpoint 
 }
 </pre>
 
