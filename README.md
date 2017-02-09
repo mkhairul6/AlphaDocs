@@ -50,6 +50,7 @@
 	* <a href="#pay-with-credit-card">Pay with credit card</a>
 	* <a href="#reading-all-orders-including-offline-orders">Reading All Orders Including Offline Orders</a>
 	* <a href="#order-collection-reminder-push-notification">Order Collection Reminder Push Notification</a>
+	* <a href="#update-order-fulfillment-time">Update Order Fulfillment Time</a>
 8. <a href="#masterpass-with-wirecard">MasterPass with WireCard</a>
 	* <a href="#pairing-request">Pairing request</a>
 	* <a href="#precheckout-request">Precheckout request</a>
@@ -1492,9 +1493,26 @@ Pass in `all=true` parameter to <a href="#reading-all-orders">Reading all Orders
 
 * all: boolean
 
-## Order Collection Reminder Push Notifications
+## Order Collection Reminder Push Notification
 
 Push notifications are sent to user's mobile devices (if the user has registered a device token during login) for reminding user of an upcoming order collection. The notification will have a message which can be displayed to the user. The notification will also contain a `type: ORDER_COLLECTION_REMINDER` in the payload which can be used to determine whether additional actions need to be completed on receiving this notification. 
+
+## Update Order Fulfillment Time
+
+`http://<server>/api/1.0/order/<brandCode>/updateOrder/<orderNumber>`
+
+### POST Parameters:
+
+* fulfillmentTime: milliseconds since epoch time, time the customer wants to be fulfilled
+
+### Response:
+
+<pre>
+{
+	success: true,
+	order: Order object
+}
+</pre>
 
 # MasterPass with WireCard
 
