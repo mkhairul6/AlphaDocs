@@ -49,6 +49,7 @@
 	* <a href="#register-a-card">Register a Card</a>
 	* <a href="#pay-with-credit-card">Pay with credit card</a>
 	* <a href="#reading-all-orders-including-offline-orders">Reading All Orders Including Offline Orders</a>
+	* <a href="#order-collection-reminder-push-notification">Order Collection Reminder Push Notification</a>
 8. <a href="#masterpass-with-wirecard">MasterPass with WireCard</a>
 	* <a href="#pairing-request">Pairing request</a>
 	* <a href="#precheckout-request">Precheckout request</a>
@@ -1490,6 +1491,10 @@ Pass in `all=true` parameter to <a href="#reading-all-orders">Reading all Orders
 ### URL Parameters:
 
 * all: boolean
+
+## Order Collection Reminder Push Notifications
+
+Push notifications are sent to user's mobile devices (if the user has registered a device token during login) for reminding user of an upcoming order collection. The notification will have a message which can be displayed to the user. The notification will also contain a `type: ORDER_COLLECTION_REMINDER` in the payload which can be used to determine whether additional actions need to be completed on receiving this notification. 
 
 # MasterPass with WireCard
 
