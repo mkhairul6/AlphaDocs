@@ -1057,7 +1057,7 @@ Note that payments will be not validated by Alpha. Users usually pay first befor
 	dineInStores: Array of Store IDs, only applicable when dineIn is true, and if empty, means ALL stores are applicable,
 	deliveryStores: Array of Store IDs, only applicable when delivery is true, and if empty, means ALL stores are applicable,
 	emailDomains: Array of strings, e.g. of a string - "@eunoia.asia", only customers whose emails match any of these domains can apply this promotion,
-	paymentTypes: Array of strings, currently only "CASH", "MASTERPASS", "PAYPAL", "STRIPE", only orders paid with any of these payment methods are applicable, if empty all payment types are applicable,
+	paymentTypes: Array of strings, currently only "CASH", "MASTERPASS", "PAYPAL", "STRIPE", "CREDIT_CARD", only orders paid with any of these payment methods are applicable, if empty all payment types are applicable,
 	dollarDiscount: decimal number, dollars off a product or cart, only applicable when benefitType == "DOLLAR_DISCOUNT_ON_ITEM" || "DOLLARY_DISCOUNT_ON_CART",
 	percentageDiscount: decimal number, x% off off a product or cart, only applicable when benefitType == "PERCENTAGE_DISCOUNT_ON_ITEM" || "PERCENTAGE_DISCOUNT_ON_CART",
 	criteriaProducts: Array of Product IDs, products that will receive dollar or percentage discount, only applicable when benefitType == "DOLLAR_DISCOUNT_ON_ITEM" || "PERCENTAGE_DISCOUNT_ON_ITEM",
