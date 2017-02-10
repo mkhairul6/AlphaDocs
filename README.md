@@ -50,7 +50,7 @@
 	* <a href="#pay-with-credit-card">Pay with credit card</a>
 	* <a href="#reading-all-orders-including-offline-orders">Reading All Orders Including Offline Orders</a>
 	* <a href="#order-collection-reminder-push-notification">Order Collection Reminder Push Notification</a>
-	* <a href="#update-order-fulfillment-time">Update Order Fulfillment Time</a>
+	* <a href="#update-order">Update Order</a>
 8. <a href="#masterpass-with-wirecard">MasterPass with WireCard</a>
 	* <a href="#pairing-request">Pairing request</a>
 	* <a href="#precheckout-request">Precheckout request</a>
@@ -1495,11 +1495,11 @@ Pass in `all=true` parameter to <a href="#reading-all-orders">Reading all Orders
 
 ## Order Collection Reminder Push Notification
 
-Push notifications are sent to user's mobile devices (if the user has registered a device token during login) for reminding user of an upcoming order collection. The notification will have a message which can be displayed to the user. The notification will also contain a `type: ORDER_COLLECTION_REMINDER` in the payload which can be used to determine whether additional actions need to be completed on receiving this notification. 
+Push notifications are sent to user's mobile devices (if the user has registered a device token during login) for reminding user of an upcoming order collection. The notification will have a message which can be displayed to the user. The notification will also contain a `type: ORDER_COLLECTION_REMINDER` and `order: Order object` in the payload which can be used to determine whether additional actions need to be completed on receiving this notification. 
 
 See <a href="#testing-push-notifications">here</a> for more details on configuring/testing push notifications.
 
-## Update Order Fulfillment Time
+## Update Order
 
 `http://<server>/api/1.0/order/<brandCode>/updateOrder/<orderNumber>`
 
