@@ -215,7 +215,8 @@ If `storeId` is passed in, only the available menu for that particular store is 
 	name: string,
 	apiCode: string,
 	defaultImageId: string, default product image the client should use if any product does not have an image, beware - this can be null also
-	enableProductImages: boolean
+	enableProductImages: boolean,
+	availabilityTimeIncrement: integer, number of minutes to use for incrementing time in a time picker
 }
 </pre>
 
