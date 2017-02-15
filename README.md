@@ -792,6 +792,7 @@ The rest are same as register.
 	credits: decimal, number of credits the customer has left, should only be used for display
 	countryCode: 2-character string country code,
 	vouchers: Array of Vouchers this customer has in their account, this can be applied on an Order
+	hasPin: boolean, whether the customer account has a pin
 }
 </pre>
 
