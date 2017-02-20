@@ -1002,7 +1002,7 @@ The rest are same as register.
 ### POST Parameters:
 * authToken: string
 * product: ID of product,
-* modifiers: optional, array of modifier objects
+* modifiers: optional, array of modifier objects. Eg: modifiers[0].modifier=<ID of modifier>&modifiers[0].quantity=1
 
 ### Response:
 <pre>
@@ -1018,7 +1018,7 @@ The rest are same as register.
 ### POST Parameters:
 * authToken: string
 * product: ID of product
-* modifiers: optional, array of modifier objects
+* modifiers: optional, array of modifier objects. Eg: modifiers[0].modifier=<ID of modifier>&modifiers[0].quantity=1
 
 ### Response:
 <pre>
