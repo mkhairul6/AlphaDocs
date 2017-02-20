@@ -982,7 +982,16 @@ The rest are same as register.
 {
 	product: ID of product,
 	time: milliseconds since epoch time, time this product was favourited,
-	data: Product object, only sent when productData parameter is true
+	data: Product object, only sent when productData parameter is true,
+	modifiers: array of Modifier objects
+}
+</pre>
+
+####Modifier:
+<pre>
+{
+	modifier: ID of modifier,
+	quantity: integer
 }
 </pre>
 
@@ -992,7 +1001,8 @@ The rest are same as register.
 
 ### POST Parameters:
 * authToken: string
-* product: ID of product
+* product: ID of product,
+* modifiers: optional, array of modifier objects
 
 ### Response:
 <pre>
@@ -1008,6 +1018,7 @@ The rest are same as register.
 ### POST Parameters:
 * authToken: string
 * product: ID of product
+* modifiers: optional, array of modifier objects
 
 ### Response:
 <pre>
