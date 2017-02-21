@@ -1508,7 +1508,7 @@ Pass in `all=true` parameter to <a href="#reading-all-orders">Reading all Orders
 
 ## Order Collection Reminder Push Notification
 
-Push notifications are sent to user's mobile devices (if the user has registered a device token during login) for reminding user of an upcoming order collection. The notification will have a message which can be displayed to the user. The notification will also contain a `type: ORDER_COLLECTION_REMINDER` and `order: Order object` in the payload which can be used to determine whether additional actions need to be completed on receiving this notification. 
+Push notifications are sent to user's mobile devices (if the user has registered a device token during login) for reminding user of an upcoming order collection. The notification will have a message which can be displayed to the user. The notification will also contain a `type: ORDER_COLLECTION_REMINDER` and `number: string, human readable unique number of this order` in the payload which can be used to determine whether additional actions need to be completed on receiving this notification. 
 
 Notifications are configured to be pushed to a user's mobile device a few minutes before the order reaches PREPARATION status. This can be managed using the TIME TO NOTIFY CUSTOMER BEFORE KITCHEN PREPARATION (MINUTES) field in Alpha for editing store properties.
 
