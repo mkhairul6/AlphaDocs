@@ -1599,6 +1599,8 @@ The response provides a base64 encoded wallet data (sample [here]("http://docs.e
 
 # MasterPass with CUB
 
+Payments using MasterPass Express Checkout has 3 main steps. The first step is pairing a MasterPass wallet with the app, this can be done either during customer registration or during checkout, all express checkout payment requests require this step to be completed to know the wallet details. The next step is to fetch pre checkout data for the wallet that has been paired. This data contains card information that can be used to process an express checkout payment as part of Posting an Order API. The precheckout data can be directly requested for all subsequent purchases without having to pair again. Precheckout data must not be stored in a device or server and should be requested each time the customer requires to perform MasterPass transactions. Finally, a customer can choose to unpair the app from the MasterPass wallet.
+
 ## Pairing request
 
 `http://<server>/api/1.0/cub/pairingRequest/<brandCode>`
