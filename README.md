@@ -19,6 +19,7 @@
 	* <a href="#logout-customer">Logout Customer</a>
 	* <a href="#request-for-customer-password-change">Request for Customer Password Change</a>
 	* <a href="#change-customer-password-after-request">Change Customer Password (after Request)</a>
+	* <a href="#create-pin">Create PIN</a>
 	* <a href="#get-eta">Get ETA</a>
 	* <a href="#get-gps-coordinates-from-address">Get GPS Coordinates from Address</a>
 	* <a href="#get-address-from-gps-coordinates">Get Address from GPS Coordinates</a>
@@ -54,7 +55,11 @@
 8. <a href="#masterpass-with-wirecard">MasterPass with WireCard</a>
 	* <a href="#pairing-request">Pairing request</a>
 	* <a href="#precheckout-request">Precheckout request</a>
-	* <a href="#create-pin">Create PIN</a>
+9. <a href="#masterpass-with-cub">MasterPass with CUB</a>
+	* <a href="#pairing-request">Pairing request</a>
+	* <a href="#precheckout-request">Precheckout request</a>
+	* <a href="#masterpass-express-checkout-payment">MasterPass Express Checkout Payment</a>
+	* <a href="#unpairing-request">Unpairing request</a>
 
 # Alpha Entities Overview
 
@@ -901,6 +906,23 @@ The rest are same as register.
 * -104: Pin is incorrect
 * -105: Code has expired
 
+## Create PIN
+
+`http://<server>/api/1.0/customer/createPin/<brandCode>`
+
+### POST parameters:
+
+<ul><li>authToken: string</li>
+<li>pin: string, 6 digit PIN used to authenticate MasterPass transactions</li></ul>
+
+### Response
+
+<pre>
+{
+	success: true
+}
+</pre>
+
 ## Get ETA
 
 `http://<server>/api/1.0/eta/<brandCode>`
@@ -912,7 +934,6 @@ The rest are same as register.
 * postalCode: pass in (this and countryCode) or address
 * countryCode: see postalCode
 * subTotal: decimal number, defaults to 0 if not passed in
-
 
 ## Get GPS Coordinates from Address
 
@@ -1576,16 +1597,108 @@ The response provides a base64 encoded wallet data (sample [here]("http://docs.e
 }
 </pre>
 
-## Create PIN
+# MasterPass with CUB
 
-`http://<server>/api/1.0/customer/createPin/<brandCode>`
+## Pairing request
 
-### POST parameters:
+`http://<server>/api/1.0/cub/pairingRequest/<brandCode>`
 
+### POST Parameters:
 <ul><li>authToken: string</li>
-<li>pin: string, 6 digit PIN used to authenticate masterpass transactions</li></ul>
+<li>deviceToken: string, unique device identifier</li></ul>
 
-### Response
+### Response:
+
+The url `http://<server>/masterpass` should be opened inside a WebView within the app with the injected JavaScript (Eg: see [here](https://facebook.github.io/react-native/docs/webview.html#injectedjavascript)) from the response. After the user pairs with MasterPass on the WebView, if the URL contains `pairingCancel` or `pairingFail`, then the pairing operation has not been completed and the app must navigate the user away from the WebView. If the URL contains `pairingSuccess`, then the pairing has been completed successfully.
+
+<pre>
+{
+	success: true,
+	injectedJavaScript: string, to be injected into the WebView on the app,
+}
+</pre>
+
+## Precheckout request
+
+`http://<server>/api/1.0/cub/precheckoutRequest/<brandCode>`
+
+### POST Parameters:
+<ul><li>authToken: string</li>
+<li>deviceToken: string, unique device identifier</li></ul>
+
+### Response:
+
+The response provides a base64 encoded wallet data (sample provided below) which can be used to display card  options and availability of redemption to the customer in the app. The selected information can be used in the place order request to pay using MasterPass. If the precheckout request fails, redirect the user to pair with their wallet again. The precheckout response cannot be used again (after using it in a transaction) or stored within the app - it should be requested each time before displaying the card details to customer.
+
+<pre>
+{
+	success: true,
+	resourceId: string,
+	walletData: string, decode using base64,
+	redeemAvailable: boolean, whether redemption is available for this wallet
+}
+</pre>
+
+### Wallet data sample
+
+<pre>
+&lt;PreCheckoutData xmlns:ns2="http://tempuri.org/MasterPassExpressCheckoutCommonType.xsd"&gt;
+   	&lt;ns2:WALLETNAME&gt;WALLETNAME&lt;/ns2:WALLETNAME&gt;
+   	&lt;ns2:PRECHECKTRANSACTIONID&gt;PRECHECKOUTTRANSACTIONID&lt;/ns2:PRECHECKTRANSACTIONID&gt;
+   	&lt;ns2:CONSUMERWALLETID&gt;CONSUMERWALLETID&lt;/ns2:CONSUMERWALLETID&gt;
+   	&lt;ns2:PROFILE&gt;
+   		&lt;ns2:FIRSTNAME&gt;FIRSTNAME&lt;/ns2:FIRSTNAME&gt;
+   		&lt;ns2:MIDDLENAME&gt;MIDDLENAME&lt;/MIDDLENAME&gt;
+   		&lt;ns2:LASTNAME&gt;LASTNAME&lt;/ns2:LASTNAME&gt;
+   		&lt;ns2:EMAILADDRESS&gt;EMAILADDRESS&lt;/ns2:EMAILADDRESS&gt;
+   		&lt;ns2:PHONENUMBER&gt;PHONENUMBER&lt;/ns2:PHONENUMBER&gt;
+   	&lt;/ns2:PROFILE&gt;
+   	&lt;ns2:CARDS&gt;
+   		&lt;ns2:CARD&gt;
+   			&lt;ns2:CARDID&gt;123456&lt;/ns2:CARDID&gt;
+   			&lt;ns2:BRANDID&gt;master&lt;/ns2:BRANDID&gt;
+   			&lt;ns2:BRANDNAME&gt;MasterCard&lt;/ns2:BRANDNAME&gt;
+   			&lt;ns2:LASTFOUR&gt;1234&lt;/ns2:LASTFOUR&gt;
+   			&lt;ns2:SETDEFAULT&gt;true&lt;/ns2:SETDEFAULT&gt;
+   		&lt;/ns2:CARD&gt;
+   		&lt;ns2:CARD&gt;
+   			&lt;ns2:CARDID&gt;123456&lt;/ns2:CARDID&gt;
+   			&lt;ns2:BRANDID&gt;visa&lt;/ns2:BRANDID&gt;
+   			&lt;ns2:BRANDNAME&gt;Visa&lt;/ns2:BRANDNAME&gt;
+   			&lt;ns2:LASTFOUR&gt;1234&lt;/ns2:LASTFOUR&gt;
+   		&lt;/ns2:CARD&gt;
+   	&lt;/ns2:CARDS&gt;
+&lt;/PreCheckoutData&gt;
+</pre>
+
+## MasterPass Express Checkout Payment
+
+Apps should pass in `masterpassPayment` object in the Order JSON in the POST body of the Posting an Order API to process payment using Express Checkout. Passing in a test order will not process payment through this method. If this object is missing or null, Alpha considers the customer does not intend to pay with MasterPass and proceeds to process the order. 
+
+### MasterPass Payment Object
+
+<pre>
+{
+	pin: string, optional 6 digit pin for verification,
+	deviceToken: string, unique device identifier,
+	transactionId: string, pre checkout transaction id from the pre checkout API response,
+	cardId: string, id of selected card,
+	redeem: boolean, whether the payment uses MasterPass redemption feature,
+	resourceId: string, resource id from the pre checkout API response
+}
+</pre>
+
+## Unpairing request
+
+`http://<server>/api/1.0/cub/unpairingRequest/<brandCode>`
+
+### POST Parameters
+<ul><li>authToken: string</li>
+<li>deviceToken: string, unique device identifier</li></ul>
+
+### Response:
+
+The reponse tells whether the customer has been unpaired from the MasterPass wallet for that device.
 
 <pre>
 {
