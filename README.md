@@ -56,8 +56,8 @@
 	* <a href="#pairing-request">Pairing request</a>
 	* <a href="#precheckout-request">Precheckout request</a>
 9. <a href="#masterpass-with-cub">MasterPass with CUB</a>
-	* <a href="#pairing-request">Pairing request</a>
-	* <a href="#precheckout-request">Precheckout request</a>
+	* <a href="#pairing-request-1">Pairing request</a>
+	* <a href="#precheckout-request-1">Precheckout request</a>
 	* <a href="#masterpass-express-checkout-payment">MasterPass Express Checkout Payment</a>
 	* <a href="#unpairing-request">Unpairing request</a>
 
