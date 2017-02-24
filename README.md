@@ -57,6 +57,7 @@
 	* <a href="#precheckout-request">Precheckout request</a>
 9. <a href="#masterpass-with-cub">MasterPass with CUB</a>
 	* <a href="#pairing-request-1">Pairing request</a>
+	* <a href="#pairing-during-checkout-request">Pairing during checkout request</a>
 	* <a href="#precheckout-request-1">Precheckout request</a>
 	* <a href="#masterpass-express-checkout-payment">MasterPass Express Checkout Payment</a>
 	* <a href="#unpairing-request">Unpairing request</a>
@@ -447,10 +448,10 @@ See <a href="#getting-all-promotions">here</a> for more details on applying prom
 <pre>
 {
 	pin: string, optional 6 digit pin for verification,
-	transactionId: string, transaction Id from the pre checkout API response,
+	transactionId: string, transaction Id from the precheckout API response,
 	cardId: string, id of selected card,
 	addressId: string, id of selected address,
-	providerRef: string, from the pre checkout API response,
+	providerRef: string, from the precheckout API response,
 	cardType: string, card type information from the encoded wallet data (BrandName element),
 	deviceToken: string, device token used for push notifications
 }
@@ -1599,11 +1600,18 @@ The response provides a base64 encoded wallet data (sample [here]("http://docs.e
 
 # MasterPass with CUB
 
-Payments using MasterPass Express Checkout has 3 main steps. The first step is pairing a MasterPass wallet with the app, this can be done either during customer registration or during checkout, all express checkout payment requests require this step to be completed to know the wallet details. The next step is to fetch pre checkout data for the wallet that has been paired. This data contains card information that can be used to process an express checkout payment as part of Posting an Order API. The precheckout data can be directly requested for all subsequent purchases without having to pair again. Precheckout data must not be stored in a device or server and should be requested each time the customer requires to perform MasterPass transactions. Finally, a customer can choose to unpair the app from the MasterPass wallet.
+Payments using MasterPass Express Checkout has 4 main steps. 
+
+1. Pairing: Pairing can be completed in one of two ways - pairing outside of checkout (eg: during customer registration) or pairing during checkout. This process allows the app to pair with the customer's MasterPass wallet subsequently allowing the app to show available credit cards and process payment without having the user to login to MasterPass.
+2. Precheckout: This API, when used after pairing is completed, allows the app to show the user's available credit cards and use them in express checkout payments. Precheckout data can be requested directly for all subsequent purchases without having to pair again. This data must not be stored in a device or server and should be requested each time the customer requires to perform MasterPass transactions.
+3. Express checkout: This is the payment step, which can be done as part of Posting an Order API by using the optional masterpassPayment object with customer's selected values from precheckout response or pairing during checkout response. 
+4. Unpairing: This is an optional step to allow the user to unpair their MasterPass wallet from the app.
 
 ## Pairing request
 
 `http://<server>/api/1.0/cub/pairingRequest/<brandCode>`
+
+This is the pairing process outside of checkout that can be completed during user registration or outside of the checkout process.
 
 ### POST Parameters:
 <ul><li>authToken: string</li>
@@ -1617,6 +1625,30 @@ The url `http://<server>/masterpass` should be opened inside a WebView within th
 {
 	success: true,
 	injectedJavaScript: string, to be injected into the WebView on the app,
+}
+</pre>
+
+## Pairing during checkout request
+
+`http://<server>/api/1.0/cub/pairingCheckoutRequest/<brandCode>`
+
+This is the pairing and checkout process that can be used when user wants to checkout a transaction, but has never paired before. Redemption option is not available if this API is used for payment, however, subsequent payments by fetching precheckout data allows for redemption to be used.
+
+### POST Parameters:
+<ul><li>authToken: string,</li>
+<li>deviceToken: string, unique device identifier,</li>
+<li>amount: decimal, absolute amount in dollars for this payment,</li>
+<li>store: ID of the store where the order is being placed</li></ul>
+
+### Response:
+
+The same url for pairing request can be opened here inside a WebvIew within the app with the injected JavaScript from the response. After user completes authentication and pairing, if the URL contains `pairingCheckoutCancel` or `pairingCheckoutFail`, then the pairing during checkout operation has not been completed and the app must navigate the user away from the WebView. If the URL contains `pairingCheckoutSuccess`, then the pairing and checkout has been completed successfully. After this step, authentication in app must be completed (using either pin or fingerprint) and then order can be placed using the Posting an Order API using the resourceId from this response.
+
+<pre>
+{
+	success: true,
+	injectedJavaScript: string, to be injected into the WebView on the app,
+	resourceId: string, value to be passed in masterpassPayment object when posting the order
 }
 </pre>
 
@@ -1683,10 +1715,10 @@ Apps should pass in `masterpassPayment` object in the Order JSON in the POST bod
 {
 	pin: string, optional 6 digit pin for verification,
 	deviceToken: string, unique device identifier,
-	transactionId: string, pre checkout transaction id from the pre checkout API response,
-	cardId: string, id of selected card,
-	redeem: boolean, whether the payment uses MasterPass redemption feature,
-	resourceId: string, resource id from the pre checkout API response
+	resourceId: string, resource id from the precheckout or pairing and checkout response,
+	transactionId: string, optional precheckout transaction id if precheckout response is available,
+	cardId: string, optional id of selected card if precheckout response is available,
+	redeem: boolean, optional whether the payment uses MasterPass redemption feature, used only when precheckout response is available
 }
 </pre>
 
