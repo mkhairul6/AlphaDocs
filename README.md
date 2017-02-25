@@ -11,6 +11,7 @@
 	* <a href="#accepting-an-order">Accepting an Order</a>
 	* <a href="#completing-an-order">Completing an Order</a>
 	* <a href="#cancelling-an-order">Cancelling an Order</a>
+	* <a href="#querying-whether-a-customer-is-registered">Querying whether a Customer is Registered</a>
 	* <a href="#register-a-customer">Register a Customer</a>
 	* <a href="#update-a-customer">Update a Customer</a>
 	* <a href="#delete-a-customer-address">Delete a Customer Address</a>
@@ -690,6 +691,21 @@ The following are descriptions for each status (values in brackets are what is d
 {
 	success: true,
 	order: Order object
+}
+</pre>
+
+## Querying whether a Customer is Registered
+
+`http://<server>/api/1.0/customer/registered/<brandCode>`
+
+### POST Parameters:
+* email
+
+### Response:
+<pre>
+{
+	success: true,
+	registered: boolean
 }
 </pre>
 
