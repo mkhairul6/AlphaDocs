@@ -1057,7 +1057,8 @@ The rest are same as register.
 
 ### POST Parameters:
 * authToken: string
-* product: ID of product
+* product: ID of product,
+* variant: optional, ID of variant,
 * modifiers: optional, array of modifier objects. Eg: modifiers[0].modifier=123&modifiers[0].quantity=1
 
 ### Response:
