@@ -1019,6 +1019,7 @@ The rest are same as register.
 <pre>
 {
 	product: ID of product,
+	variant: ID of variant,
 	time: milliseconds since epoch time, time this product was favourited,
 	data: Product object, only sent when productData parameter is true,
 	modifiers: array of Modifier objects
@@ -1040,6 +1041,7 @@ The rest are same as register.
 ### POST Parameters:
 * authToken: string
 * product: ID of product,
+* variant: optional, ID of variant,
 * modifiers: optional, array of modifier objects. Eg: modifiers[0].modifier=123&modifiers[0].quantity=1
 
 ### Response:
