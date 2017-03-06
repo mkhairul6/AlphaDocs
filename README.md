@@ -1604,7 +1604,7 @@ The url `http://<server>/masterpass` should be opened inside a WebView within th
 
 ### Response:
 
-The response provides a base64 encoded wallet data (sample [here]("http://docs.elastic-payments.com/?s=wirecardapac#alternative-payments-masterpass")) which can be used to display cards and shipping address options to the customer in the app. The selected information can be used in the place order request to pay using MasterPass. If the precheckout request fails, redirect the user to pair with their wallet again. The precheckout response cannot be used again (after using it in a transaction) or stored within the app - it should be requested each time before displaying the card details to customer.
+The response provides a base64 encoded wallet data (sample [here](http://docs.elastic-payments.com/?s=wirecardapac#alternative-payments-masterpass)) which can be used to display cards and shipping address options to the customer in the app. The selected information can be used in the place order request to pay using MasterPass. If the precheckout request fails, redirect the user to pair with their wallet again. The precheckout response cannot be used again (after using it in a transaction) or stored within the app - it should be requested each time before displaying the card details to customer.
 
 <pre>
 {
