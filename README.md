@@ -1485,7 +1485,7 @@ Failure to enter any of these fields will result an error. Note that emails and 
 <pre>
 {
 	success: true,
-	verified: boolean, whether this Souperholic account has been verified by email, this will be removed
+	verified: boolean, whether this Souperholic account has been verified by email, this will be removed, refer to 'souperholic' property instead
 	souperholic: SouperholicData object
 }
 </pre>
