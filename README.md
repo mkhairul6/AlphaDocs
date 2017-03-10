@@ -1479,6 +1479,17 @@ Souperholic requires the following fields upon registration:
 
 Failure to enter any of these fields will result an error. Note that emails and phone numbers are unique at Souperholic. Once one is registered, it cannot be registered again. Prepare multiple email accounts and multiple random phone numbers for QA!
 
+## Registration
+
+### Response:
+<pre>
+{
+	success: true,
+	verified: boolean, whether this Souperholic account has been verified by email, this will be removed
+	souperholic: SouperholicData object
+}
+</pre>
+
 ## Redeeming Points
 
 Apps should pass in the points the customer intends to redeem using the `rewardPoints` property in the Order JSON in the POST body of Posting an Order API. Passing in a test order works correctly, discounts will be created automatically with the correct amount. If this value is 0 or missing, Alpha considers the customer does not intend to redeem any points. In that case, if the order is eligible for points earning, points will be automatically credited to the customer's account. Apps should retrieve customer details again at the cart page, to get the latest points that the customer has before showing the shopping cart so the customer knows how many points is available for redemption.
