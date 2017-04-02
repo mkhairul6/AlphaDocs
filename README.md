@@ -1570,10 +1570,10 @@ See <a href="#testing-push-notifications">here</a> for more details on configuri
 
 Payments using Masterpass Express Checkout has 4 main steps. 
 
-1. Pairing: Pairing can be completed in one of two ways - pairing outside of checkout (eg: during customer registration) or pairing during checkout. This process allows the app to pair with the customer's MasterPass wallet subsequently allowing the app to show available credit cards and process payment without having the user to login to MasterPass.
-2. Precheckout: This API, when used after pairing is completed, allows the app to show the user's available credit cards and use them in express checkout payments. Precheckout data can be requested directly for all subsequent purchases without having to pair again. This data must not be stored in a device or server and should be requested each time the customer requires to perform MasterPass transactions.
+1. Pairing: Pairing can be completed in one of two ways - pairing outside of checkout (eg: during customer registration) or pairing during checkout. This process allows the app to pair with the customer's Masterpass wallet subsequently allowing the app to show available credit cards and process payment without having the user to login to Masterpass.
+2. Precheckout: This API, when used after pairing is completed, allows the app to show the user's available credit cards and use them in express checkout payments. Precheckout data can be requested directly for all subsequent purchases without having to pair again. This data must not be stored in a device or server and should be requested each time the customer requires to perform Masterpass transactions.
 3. Express checkout: This is the payment step, which can be done as part of Posting an Order API by using the optional masterpassPayment object with customer's selected values from precheckout response or pairing during checkout response. 
-4. Unpairing: This is an optional step to allow the user to unpair their MasterPass wallet from the app.
+4. Unpairing: This is an optional step to allow the user to unpair their Masterpass wallet from the app.
 
 Masterpass express checkout payments must be authenticated using either the mobile device touch authentication and/or a 6 digit PIN. Reference: <a href="#create-pin">Create PIN</a> & <a href="#update-a-customer">Update PIN</a>
 
@@ -1637,7 +1637,7 @@ This is the pairing process outside of checkout that can be completed during use
 
 #### Response:
 
-The url `http://<server>/masterpass` should be opened inside a WebView within the app with the injected JavaScript (Eg: see [here](https://facebook.github.io/react-native/docs/webview.html#injectedjavascript)) from the response. After the user pairs with MasterPass on the WebView, if the URL contains `pairingCancel` or `pairingFail`, then the pairing operation has not been completed and the app must navigate the user away from the WebView. If the URL contains `pairingSuccess`, then the pairing has been completed successfully.
+The url `http://<server>/masterpass` should be opened inside a WebView within the app with the injected JavaScript (Eg: see [here](https://facebook.github.io/react-native/docs/webview.html#injectedjavascript)) from the response. After the user pairs with Masterpass on the WebView, if the URL contains `pairingCancel` or `pairingFail`, then the pairing operation has not been completed and the app must navigate the user away from the WebView. If the URL contains `pairingSuccess`, then the pairing has been completed successfully.
 
 <pre>
 {
@@ -1650,7 +1650,7 @@ The url `http://<server>/masterpass` should be opened inside a WebView within th
 
 `http://<server>/api/1.0/mpgs/pairingCheckoutRequest/<brandCode>`
 
-This is the pairing and checkout process that can be used when user wants to checkout a transaction, but has never paired before. Redemption option is not available if this API is used for payment, however, subsequent payments by fetching precheckout data allows for redemption to be used.
+This is the pairing and checkout process that can be used when user wants to checkout a transaction, but has never paired before. 
 
 #### POST Parameters:
 <ul><li>authToken: string,</li>
@@ -1679,7 +1679,7 @@ The same url for pairing request can be opened here inside a WebvIew within the 
 
 #### Response:
 
-The response provides a base64 encoded wallet data (sample provided below) which can be used to display card  options and availability of redemption to the customer in the app. The selected information can be used in the place order request to pay using MasterPass. If the precheckout request fails, redirect the user to pair with their wallet again. The precheckout response cannot be used again (after using it in a transaction) or stored within the app - it should be requested each time before displaying the card details to customer.
+The response provides a base64 encoded wallet data (sample provided below) which can be used to display card options to the customer in the app. The selected information can be used in the place order request to pay using Masterpass. If the precheckout request fails, redirect the user to pair with their wallet again. The precheckout response cannot be used again (after using it in a transaction) or stored within the app - it should be requested each time before displaying the card details to customer.
 
 <pre>
 {
@@ -1736,11 +1736,11 @@ The response provides a base64 encoded wallet data (sample provided below) which
 }
 </pre>
 
-### MasterPass Express Checkout Payment
+### Masterpass Express Checkout Payment
 
-Apps should pass in `masterpassPayment` object in the Order JSON in the POST body of the Posting an Order API to process payment using Express Checkout. Passing in a test order will not process payment through this method. If this object is missing or null, Alpha considers the customer does not intend to pay with MasterPass and proceeds to process the order. 
+Apps should pass in `masterpassPayment` object in the Order JSON in the POST body of the Posting an Order API to process payment using Express Checkout. Passing in a test order will not process payment through this method. If this object is missing or null, Alpha considers the customer does not intend to pay with Masterpass and proceeds to process the order. 
 
-#### MasterPass Payment Object
+#### Masterpass Payment Object
 
 <pre>
 {
@@ -1766,7 +1766,7 @@ This is the pairing process outside of checkout that can be completed during use
 
 #### Response:
 
-The url `http://<server>/masterpass` should be opened inside a WebView within the app with the injected JavaScript (Eg: see [here](https://facebook.github.io/react-native/docs/webview.html#injectedjavascript)) from the response. After the user pairs with MasterPass on the WebView, if the URL contains `pairingCancel` or `pairingFail`, then the pairing operation has not been completed and the app must navigate the user away from the WebView. If the URL contains `pairingSuccess`, then the pairing has been completed successfully.
+The url `http://<server>/masterpass` should be opened inside a WebView within the app with the injected JavaScript (Eg: see [here](https://facebook.github.io/react-native/docs/webview.html#injectedjavascript)) from the response. After the user pairs with Masterpass on the WebView, if the URL contains `pairingCancel` or `pairingFail`, then the pairing operation has not been completed and the app must navigate the user away from the WebView. If the URL contains `pairingSuccess`, then the pairing has been completed successfully.
 
 <pre>
 {
@@ -1809,7 +1809,7 @@ The same url for pairing request can be opened here inside a WebvIew within the 
 
 #### Response:
 
-The response provides a base64 encoded wallet data (sample provided below) which can be used to display card  options and availability of redemption to the customer in the app. The selected information can be used in the place order request to pay using MasterPass. If the precheckout request fails, redirect the user to pair with their wallet again. The precheckout response cannot be used again (after using it in a transaction) or stored within the app - it should be requested each time before displaying the card details to customer.
+The response provides a base64 encoded wallet data (sample provided below) which can be used to display card options and availability of redemption to the customer in the app. The selected information can be used in the place order request to pay using Masterpass. If the precheckout request fails, redirect the user to pair with their wallet again. The precheckout response cannot be used again (after using it in a transaction) or stored within the app - it should be requested each time before displaying the card details to customer.
 
 <pre>
 {
@@ -1852,11 +1852,11 @@ The response provides a base64 encoded wallet data (sample provided below) which
 &lt;/PreCheckoutData&gt;
 </pre>
 
-### MasterPass Express Checkout Payment
+### Masterpass Express Checkout Payment
 
-Apps should pass in `masterpassPayment` object in the Order JSON in the POST body of the Posting an Order API to process payment using Express Checkout. Passing in a test order will not process payment through this method. If this object is missing or null, Alpha considers the customer does not intend to pay with MasterPass and proceeds to process the order. 
+Apps should pass in `masterpassPayment` object in the Order JSON in the POST body of the Posting an Order API to process payment using Express Checkout. Passing in a test order will not process payment through this method. If this object is missing or null, Alpha considers the customer does not intend to pay with Masterpass and proceeds to process the order. 
 
-#### MasterPass Payment Object
+#### Masterpass Payment Object
 
 <pre>
 {
@@ -1865,7 +1865,7 @@ Apps should pass in `masterpassPayment` object in the Order JSON in the POST bod
 	resourceId: string, resource id from the precheckout or pairing and checkout response,
 	transactionId: string, optional precheckout transaction id if precheckout response is available,
 	cardId: string, optional id of selected card if precheckout response is available,
-	redeem: boolean, optional whether the payment uses MasterPass redemption feature, used only when precheckout response is available
+	redeem: boolean, optional whether the payment uses Masterpass redemption feature, used only when precheckout response is available
 }
 </pre>
 
@@ -1879,7 +1879,7 @@ Apps should pass in `masterpassPayment` object in the Order JSON in the POST bod
 
 #### Response:
 
-The reponse tells whether the customer has been unpaired from the MasterPass wallet for that device.
+The reponse tells whether the customer has been unpaired from the Masterpass wallet for that device.
 
 <pre>
 {
@@ -1899,7 +1899,7 @@ The reponse tells whether the customer has been unpaired from the MasterPass wal
 
 #### Response:
 
-The url `http://<server>/masterpass` should be opened inside a WebView within the app with the injected JavaScript (Eg: see [here](https://facebook.github.io/react-native/docs/webview.html#injectedjavascript)) from the response. After the user pairs with MasterPass on the WebView, if the URL contains `pairingCancel` or `pairingFail`, then the pairing operation has not been completed and the app must navigate the user away from the WebView. If the URL contains `pairingSuccess`, then the pairing has been completed successfully.
+The url `http://<server>/masterpass` should be opened inside a WebView within the app with the injected JavaScript (Eg: see [here](https://facebook.github.io/react-native/docs/webview.html#injectedjavascript)) from the response. After the user pairs with Masterpass on the WebView, if the URL contains `pairingCancel` or `pairingFail`, then the pairing operation has not been completed and the app must navigate the user away from the WebView. If the URL contains `pairingSuccess`, then the pairing has been completed successfully.
 
 <pre>
 {
@@ -1919,7 +1919,7 @@ The url `http://<server>/masterpass` should be opened inside a WebView within th
 
 #### Response:
 
-The response provides a base64 encoded wallet data (sample [here](http://docs.elastic-payments.com/?s=wirecardapac#alternative-payments-masterpass)) which can be used to display cards and shipping address options to the customer in the app. The selected information can be used in the place order request to pay using MasterPass. If the precheckout request fails, redirect the user to pair with their wallet again. The precheckout response cannot be used again (after using it in a transaction) or stored within the app - it should be requested each time before displaying the card details to customer.
+The response provides a base64 encoded wallet data (sample [here](http://docs.elastic-payments.com/?s=wirecardapac#alternative-payments-masterpass)) which can be used to display cards and shipping address options to the customer in the app. The selected information can be used in the place order request to pay using Masterpass. If the precheckout request fails, redirect the user to pair with their wallet again. The precheckout response cannot be used again (after using it in a transaction) or stored within the app - it should be requested each time before displaying the card details to customer.
 
 <pre>
 {
@@ -1932,11 +1932,11 @@ The response provides a base64 encoded wallet data (sample [here](http://docs.el
 }
 </pre>
 
-### MasterPass Express Checkout Payment
+### Masterpass Express Checkout Payment
 
-Apps should pass in `masterpassPayment` object in the Order JSON in the POST body of the Posting an Order API to process payment using Express Checkout. Passing in a test order will not process payment through this method. If this object is missing or null, Alpha considers the customer does not intend to pay with MasterPass and proceeds to process the order. 
+Apps should pass in `masterpassPayment` object in the Order JSON in the POST body of the Posting an Order API to process payment using Express Checkout. Passing in a test order will not process payment through this method. If this object is missing or null, Alpha considers the customer does not intend to pay with Masterpass and proceeds to process the order. 
 
-#### MasterPass Payment Object
+#### Masterpass Payment Object
 
 <pre>
 {
