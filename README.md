@@ -1579,7 +1579,7 @@ Masterpass express checkout payments must be authenticated using either the mobi
 
 ## Testing
 
-Masterpass payments can be tested by using wallets created containing one of the following test credit cards.
+Masterpass payments can be tested by using wallets [created](https://sandbox.wallet.masterpass.com/Wallet/masterpass/en-sg/) containing one of the following test credit cards.
 
 <table>
 	<thead>
