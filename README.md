@@ -53,15 +53,11 @@
 	* <a href="#reading-all-orders-including-offline-orders">Reading All Orders Including Offline Orders</a>
 	* <a href="#order-collection-reminder-push-notification">Order Collection Reminder Push Notification</a>
 	* <a href="#update-order">Update Order</a>
-8. <a href="#masterpass-with-wirecard">MasterPass with WireCard</a>
-	* <a href="#pairing-request">Pairing request</a>
-	* <a href="#precheckout-request">Precheckout request</a>
-9. <a href="#masterpass-with-cub">MasterPass with CUB</a>
-	* <a href="#pairing-request-1">Pairing request</a>
-	* <a href="#pairing-during-checkout-request">Pairing during checkout request</a>
-	* <a href="#precheckout-request-1">Precheckout request</a>
-	* <a href="#masterpass-express-checkout-payment">MasterPass Express Checkout Payment</a>
-	* <a href="#unpairing-request">Unpairing request</a>
+8. <a href="#masterpass">Masterpass</a>
+	* <a href="#testing">Testing</a>
+	* <a href="#mpgs">MPGS</a>
+	* <a href="#cub">CUB</a>
+	* <a href="#wirecard">Wirecard</a>
 
 # Alpha Entities Overview
 
@@ -917,7 +913,7 @@ The rest are same as register.
 ### POST parameters:
 
 <ul><li>authToken: string</li>
-<li>pin: string, 6 digit PIN used to authenticate MasterPass transactions</li></ul>
+<li>pin: string, 6 digit PIN used to authenticate Masterpass transactions</li></ul>
 
 ### Response
 
