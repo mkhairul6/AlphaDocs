@@ -1575,6 +1575,15 @@ Payments using Masterpass Express Checkout has 4 main steps.
 3. Express checkout: This is the payment step, which can be done as part of Posting an Order API by using the optional masterpassPayment object with customer's selected values from precheckout response or pairing during checkout response. 
 4. Unpairing: This is an optional step to allow the user to unpair their Masterpass wallet from the app.
 
+The following card types are supported for payment using a Masterpass wallet:
+
+1. MasterCard
+2. American Express
+3. Diners
+4. Discover
+5. Maestro
+6. Visa
+
 Masterpass express checkout payments must be authenticated using either the mobile device touch authentication and/or a 6 digit PIN. Reference: <a href="#create-pin">Create PIN</a> & <a href="#update-a-customer">Update PIN</a>
 
 ## Testing
