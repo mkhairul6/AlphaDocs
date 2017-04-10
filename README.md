@@ -120,6 +120,14 @@ It will be at something like `/api/<version>/<service>/<brandCode>`
 
 `http://<server>/api/1.0/stores/<brandCode>`
 
+
+### GET Parameters:
+* lat: double, latitude of user's current location, optional
+* lng: double, longitude of user's current location, optional
+* line: string, human readable address of user's current location, optional
+
+If `(lat and lng)` or `line` is passed in, the stores returned will be sorted in ascending order of their distances to the user's current location.
+
 ### Response:
 <pre>
 {
