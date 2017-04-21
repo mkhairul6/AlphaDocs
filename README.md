@@ -132,7 +132,8 @@ If `(lat and lng)` or `line` is passed in, the stores returned will be sorted in
 <pre>
 {
 	success: true,
-	stores: Array of Stores
+	stores: Array of Stores,
+	serverTime: milliseconds since epochTime, current server time,
 }
 </pre>
 
