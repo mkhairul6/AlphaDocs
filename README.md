@@ -134,6 +134,7 @@ If `(lat and lng)` or `line` is passed in, the stores returned will be sorted in
 	success: true,
 	stores: Array of Stores,
 	serverTime: milliseconds since epochTime, current server time,
+	timeZoneOffset: integer, UTC value, E.g. Singapore UTC+08:00 => 800, India UTC+05:30 => 530, Mexico City UTC-06:00 => -600
 }
 </pre>
 
