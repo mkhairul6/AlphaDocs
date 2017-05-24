@@ -143,9 +143,12 @@ If `(lat and lng)` or `line` is passed in, the stores returned will be sorted in
 {
 	id: ID,
 	name: string,
-	delivery: boolean, whether this store does delivery,
+	delivery: boolean, whether this store is available for delivery right now,
 	takeAway: boolean,
 	dineIn: boolean,
+	presetDelivery: boolean, whether this store does delivery,
+	presetTakeAway: boolean,
+	presetDineIn: boolean,
 	address: Address object,
 	coord: Coordinates object,
 	email: string,
