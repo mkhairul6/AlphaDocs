@@ -945,6 +945,14 @@ The rest are same as register.
 * countryCode: see postalCode
 * subTotal: decimal number, defaults to 0 if not passed in
 
+### Response:
+<pre>
+{
+	success: true,
+	eta: integer, estimated time of arrival in minutes
+}
+</pre>
+
 ## Get GPS Coordinates from Address
 
 `http://<server>/api/1.0/location/coordinates`
