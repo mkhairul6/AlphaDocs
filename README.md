@@ -1090,7 +1090,7 @@ Note that payments will be not validated by Alpha. Users usually pay first befor
 	benefitType: "FREE_ITEM|DOLLAR_DISCOUNT_ON_ITEM|DOLLAR_DISCOUNT_ON_CART|PERCENTAGE_DISCOUNT_ON_ITEM|PERCENTAGE_DISCOUNT_ON_CART", see Benefit Types below for more details,
 	periodType: "LIMITED_PERIOD|FOREVER",
 	periodFrom: millseconds since epochTime, when this promotion starts, only applicable when periodType == "LIMITED_PERIOD",
-	periodFrom: millseconds since epochTime, last day before this promotion ends, only applicable when periodType == "LIMITED_PERIOD",
+	periodTo: millseconds since epochTime, last day before this promotion ends, only applicable when periodType == "LIMITED_PERIOD",
 	fulfillmentType: "ANY_TIME|CUSTOM", ANY_TIME means this can be redeemed anytime during the promotion period, CUSTOM means can only be redeemed during the fulfillment times,
 	fulfillmentTimes: Array of Availabilities, can only be redeemed during these hours, only applicable when fulfillmentType == "CUSTOM",
 	publishType: "VOUCHERS|PROMO_CODE",
