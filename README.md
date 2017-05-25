@@ -668,7 +668,7 @@ The following are descriptions for each status (values in brackets are what is d
 
 ## Completing an Order
 
-`http://<server>/api/1.0/orders/<brandCode>/complete/<order number>`
+`http://<server>/api/1.0/order/<brandCode>/complete/<order number>`
 
 ### Response:
 <pre>
@@ -680,7 +680,7 @@ The following are descriptions for each status (values in brackets are what is d
 
 ## Cancelling an Order
 
-`http://<server>/api/1.0/orders/<brandCode>/cancel/<order number>`
+`http://<server>/api/1.0/order/<brandCode>/cancel/<order number>`
 
 ### Response:
 <pre>
