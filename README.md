@@ -6,3 +6,5 @@
 4. <a href="https://platform.eunoia.asia/docs/cama-cafe.jsp">Cama Cafe Extensions</a>
 5. <a href="https://platform.eunoia.asia/docs/the-soup-spoon.jsp">The Soup Spoon Extensions</a>
 6. <a href="https://platform.eunoia.asia/docs/masterpass.jsp">Masterpass</a>
+
+Just checking in on this repo
